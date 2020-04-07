@@ -1,6 +1,3 @@
-
-
-
 function login() {
   const uid = document.getElementById("uid_field").value;
   const password = document.getElementById("password_field").value;
