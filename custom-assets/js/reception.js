@@ -32,6 +32,7 @@ const handleSubmit = () => {
                 )
                 let tokenNumber = generateToken(customerKey, vehicleNumber)
                 alert("Your token number is: " + tokenNumber)
+                resetForm()
 
             }
         })
@@ -66,14 +67,19 @@ const generateToken = (customerKey, vehicleNumber) => {
     return newToken.key
 }
 
+let customerCount = document.getElementById("customerCount")
+
 const fetchTokenList = () => {
     const ref = firebase.database().ref('tokens')
     ref.on("value", snapshot => {
-        snapshot.forEach(childSnapshot => {
-            let tokenKey = childSnapshot.key
-            let tokenData = childSnapshot.val()
-            console.log(tokenData);
+        var count = snapshot.numChildren()
+        customerCount.innerHTML = count
+        // snapshot.forEach(childSnapshot => {
+        //     let tokenKey = childSnapshot.key
+        //     let tokenData = childSnapshot.val()
+        //     console.log(tokenData);
 
-        })
+
+        // })
     })
 }
