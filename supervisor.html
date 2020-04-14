@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="Start your development with a Dashboard for Bootstrap 4.">
     <meta name="author" content="Creative Tim">
-    <title>Reception | GM ERP</title>
+    <title>Supervisor | GM ERP</title>
     <!-- Favicon -->
     <link rel="icon" href="./assets/img/brand/favicon.png" type="image/png">
     <!-- Fonts -->
@@ -14,22 +14,16 @@
     <!-- Icons -->
     <link rel="stylesheet" href="./assets/vendor/nucleo/css/nucleo.css" type="text/css">
     <link rel="stylesheet" href="./assets/vendor/@fortawesome/fontawesome-free/css/all.min.css" type="text/css">
+    <!-- Page plugins -->
     <!-- Argon CSS -->
     <link rel="stylesheet" href="./assets/css/argon.css?v=1.2.0" type="text/css">
 </head>
 
-<body onload="fetchTokenList()">
-    <!-- Checking if user has already logged in -->
-    <script>
-        if (localStorage.getItem("user") === null) {
-            window.location = "./../../index.html";
-        }
-    </script>
-
+<body>
     <!-- Main content -->
     <div class="main-content" id="panel">
         <!-- Topnav -->
-        <nav class="navbar navbar-top navbar-expand navbar-dark bg-default border-bottom">
+        <nav class="navbar navbar-top navbar-expand navbar-dark bg-primary border-bottom">
             <div class="container-fluid">
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Search form -->
@@ -88,7 +82,7 @@
                                             <div class="col ml--2">
                                                 <div class="d-flex justify-content-between align-items-center">
                                                     <div>
-                                                        <h4 class="mb-0 text-sm username">John Snow</h4>
+                                                        <h4 class="mb-0 text-sm">John Snow</h4>
                                                     </div>
                                                     <div class="text-right text-muted">
                                                         <small>2 hrs ago</small>
@@ -108,7 +102,7 @@
                                             <div class="col ml--2">
                                                 <div class="d-flex justify-content-between align-items-center">
                                                     <div>
-                                                        <h4 class="mb-0 text-sm username">John Snow</h4>
+                                                        <h4 class="mb-0 text-sm">John Snow</h4>
                                                     </div>
                                                     <div class="text-right text-muted">
                                                         <small>3 hrs ago</small>
@@ -128,7 +122,7 @@
                                             <div class="col ml--2">
                                                 <div class="d-flex justify-content-between align-items-center">
                                                     <div>
-                                                        <h4 class="mb-0 text-sm username">John Snow</h4>
+                                                        <h4 class="mb-0 text-sm">John Snow</h4>
                                                     </div>
                                                     <div class="text-right text-muted">
                                                         <small>5 hrs ago</small>
@@ -148,7 +142,7 @@
                                             <div class="col ml--2">
                                                 <div class="d-flex justify-content-between align-items-center">
                                                     <div>
-                                                        <h4 class="mb-0 text-sm username">John Snow</h4>
+                                                        <h4 class="mb-0 text-sm">John Snow</h4>
                                                     </div>
                                                     <div class="text-right text-muted">
                                                         <small>2 hrs ago</small>
@@ -168,7 +162,7 @@
                                             <div class="col ml--2">
                                                 <div class="d-flex justify-content-between align-items-center">
                                                     <div>
-                                                        <h4 class="mb-0 text-sm username">John Snow</h4>
+                                                        <h4 class="mb-0 text-sm">John Snow</h4>
                                                     </div>
                                                     <div class="text-right text-muted">
                                                         <small>3 hrs ago</small>
@@ -241,7 +235,7 @@
                                         <img alt="Image placeholder" src="./assets/img/theme/team-4.jpg">
                                     </span>
                                     <div class="media-body  ml-2  d-none d-lg-block">
-                                        <span class="mb-0 text-sm font-weight-bold username">John Snow</span>
+                                        <span class="mb-0 text-sm  font-weight-bold">John Snow</span>
                                     </div>
                                 </div>
                             </a>
@@ -266,7 +260,7 @@
                                     <span>Support</span>
                                 </a>
                                 <div class="dropdown-divider"></div>
-                                <a href="./index.html" class="dropdown-item" onclick='logout()'>
+                                <a href="#!" class="dropdown-item">
                                     <i class="ni ni-user-run"></i>
                                     <span>Logout</span>
                                 </a>
@@ -278,190 +272,223 @@
         </nav>
 
         <!-- Header -->
-        <div class="header pb-6 d-flex align-items-center"
-            style="min-height: 500px; background-image: url(./assets/img/theme/profile-cover.jpg); background-size: cover; background-position: center top;">
-            <!-- Mask -->
-            <span class="mask bg-gradient-default opacity-8"></span>
-            <!-- Header container -->
-            <div class="container-fluid d-flex align-items-center">
-                <div class="row">
-                    <div class="col-lg-7 col-md-10">
-                        <h1 class="display-2 text-white username">Hello Jesse</h1>
-                        <p class="text-white mt-0 mb-5">This is the reception page. You can add incoming customers in
-                            the queue and generate token numbers for them.</p>
-                        <a href="javascript:fetchTokenList()" class="btn btn-neutral">Edit profile</a>
+        <!-- Header -->
+        <div class="header bg-primary pb-6">
+            <div class="container-fluid">
+                <div class="header-body">
+                    <div class="row align-items-center py-4">
+                        <div class="col-lg-6 col-7">
+                            <h6 class="h2 text-white d-inline-block mb-0">Default</h6>
+                            <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
+                                <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
+                                    <li class="breadcrumb-item">
+                                        <a href="#"><i class="fas fa-home"></i></a>
+                                    </li>
+                                    <li class="breadcrumb-item"><a href="#">Dashboards</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page">
+                                        Default
+                                    </li>
+                                </ol>
+                            </nav>
+                        </div>
+                        <div class="col-lg-6 col-5 text-right">
+                            <a href="#" class="btn btn-sm btn-neutral">New</a>
+                            <a href="#" class="btn btn-sm btn-neutral">Filters</a>
+                        </div>
+                    </div>
+                    <!-- Card stats -->
+                    <div class="row">
+                        <div class="col-xl-3 col-md-6">
+                            <div class="card card-stats">
+                                <!-- Card body -->
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col">
+                                            <h5 class="card-title text-uppercase text-muted mb-0">
+                                                Total traffic
+                                            </h5>
+                                            <span class="h2 font-weight-bold mb-0">350,897</span>
+                                        </div>
+                                        <div class="col-auto">
+                                            <div
+                                                class="icon icon-shape bg-gradient-red text-white rounded-circle shadow">
+                                                <i class="ni ni-active-40"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <p class="mt-3 mb-0 text-sm">
+                                        <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 3.48%</span>
+                                        <span class="text-nowrap">Since last month</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-md-6">
+                            <div class="card card-stats">
+                                <!-- Card body -->
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col">
+                                            <h5 class="card-title text-uppercase text-muted mb-0">
+                                                New users
+                                            </h5>
+                                            <span class="h2 font-weight-bold mb-0">2,356</span>
+                                        </div>
+                                        <div class="col-auto">
+                                            <div
+                                                class="icon icon-shape bg-gradient-orange text-white rounded-circle shadow">
+                                                <i class="ni ni-chart-pie-35"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <p class="mt-3 mb-0 text-sm">
+                                        <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 3.48%</span>
+                                        <span class="text-nowrap">Since last month</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-md-6">
+                            <div class="card card-stats">
+                                <!-- Card body -->
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col">
+                                            <h5 class="card-title text-uppercase text-muted mb-0">
+                                                Sales
+                                            </h5>
+                                            <span class="h2 font-weight-bold mb-0">924</span>
+                                        </div>
+                                        <div class="col-auto">
+                                            <div
+                                                class="icon icon-shape bg-gradient-green text-white rounded-circle shadow">
+                                                <i class="ni ni-money-coins"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <p class="mt-3 mb-0 text-sm">
+                                        <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 3.48%</span>
+                                        <span class="text-nowrap">Since last month</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-md-6">
+                            <div class="card card-stats">
+                                <!-- Card body -->
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col">
+                                            <h5 class="card-title text-uppercase text-muted mb-0">
+                                                Performance
+                                            </h5>
+                                            <span class="h2 font-weight-bold mb-0">49,65%</span>
+                                        </div>
+                                        <div class="col-auto">
+                                            <div
+                                                class="icon icon-shape bg-gradient-info text-white rounded-circle shadow">
+                                                <i class="ni ni-chart-bar-32"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <p class="mt-3 mb-0 text-sm">
+                                        <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 3.48%</span>
+                                        <span class="text-nowrap">Since last month</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
 
+
         <!-- Page content -->
         <div class="container-fluid mt--6">
             <div class="row">
-                <div class="col-xl-4 order-xl-2">
-                    <div class="card card-profile">
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col">
-                                    <div class="card-profile-stats d-flex justify-content-center">
-                                        <div>
-                                            <span class="heading" id="supervisorCount">5</span>
-                                            <span class="description">Supervisors Available</span>
-                                        </div>
-                                        <div>
-                                            <span class="heading" id="customerCount"></span>
-                                            <span class="description">Customer Count</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-8 order-xl-1">
+                <div class="col-xl mb-4">
                     <div class="card">
-                        <div class="card-header">
+                        <div class="card-header border-0">
                             <div class="row align-items-center">
-                                <div class="col-8">
-                                    <h3 class="mb-0">Generate Token</h3>
+                                <div class="col">
+                                    <h3 class="mb-0">Ongoing Jobs</h3>
                                 </div>
-                                <div class="col-4 text-right">
-                                    <a href="javascript:resetForm()" class="btn btn-sm btn-outline-primary">
-                                        Reset
-                                    </a>
+                                <div class="col text-right">
+                                    <a href="#!" class="btn btn-sm btn-primary">See all</a>
                                 </div>
                             </div>
                         </div>
-                        <div class="card-body">
-                            <form id="form-generate-token">
-
-                                <!-- Personal -->
-                                <h6 class="heading-small text-muted mb-4">Personal information</h6>
-                                <div class="pl-lg-4">
-                                    <div class="row">
-                                        <div class="col-lg-6">
-                                            <div class="form-group">
-                                                <label class="form-control-label" for="input-first-name">
-                                                    First name
-                                                </label>
-                                                <input type="text" id="input-first-name" name="first-name"
-                                                    class="form-control" placeholder="First Name">
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-6">
-                                            <div class="form-group">
-                                                <label class="form-control-label" for="input-last-name">
-                                                    Last name
-                                                </label>
-                                                <input type="text" id="input-last-name" name="last-name"
-                                                    class="form-control" placeholder="Last Name">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-lg-6">
-                                            <div class="form-group">
-                                                <label class="form-control-label" for="input-email">
-                                                    Email address
-                                                </label>
-                                                <input type="email" id="input-email" name="email" class="form-control"
-                                                    placeholder="email@example.com">
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-6">
-                                            <div class="form-group">
-                                                <label class="form-control-label" for="input-username">
-                                                    Contact number
-                                                </label>
-                                                <input type="text" id="input-contact" name="contact"
-                                                    class="form-control" placeholder="+91 " value="+91 ">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-lg-6">
-                                            <div class="custom-control custom-checkbox">
-                                                <input type="checkbox" class="custom-control-input"
-                                                    id="input-complainant" name="complainant">
-                                                <label class="custom-control-label" for="input-complainant">
-                                                    Complainant
-                                                </label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <hr class="my-4" />
-
-                                <!-- Address -->
-                                <h6 class="heading-small text-muted mb-4">Residence information</h6>
-                                <div class="pl-lg-4">
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <label class="form-control-label" for="input-address">
-                                                    Address
-                                                </label>
-                                                <input id="input-address" class="form-control"
-                                                    placeholder="Flat/House No, Building Name, Street Name"
-                                                    name="address" type="text">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-lg-6">
-                                            <div class="form-group">
-                                                <label class="form-control-label" for="input-city">
-                                                    City
-                                                </label>
-                                                <input type="text" id="input-city" class="form-control"
-                                                    placeholder="City" name="city">
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-6">
-                                            <div class="form-group">
-                                                <label class="form-control-label" for="input-country">
-                                                    Postal code
-                                                </label>
-                                                <input type="text" id="input-postal-code" class="form-control"
-                                                    placeholder="Postal code" name="postal">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <hr class="my-4" />
-
-                                <!-- Vehicle -->
-                                <h6 class="heading-small text-muted mb-4">Vehicle information</h6>
-                                <div class="pl-lg-4">
-                                    <div class="row">
-                                        <div class="col-lg-6">
-                                            <div class="form-group">
-                                                <label class="form-control-label" for="input-vehicle-number">
-                                                    Registration number
-                                                </label>
-                                                <input type="text" id="input-vehicle-number" class="form-control"
-                                                    placeholder="XX-XX-XXXX" name="vehicle-number">
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-6">
-                                            <div class="form-group">
-                                                <label class="form-control-label" for="input-vehicle-brand">
-                                                    Brand
-                                                </label>
-                                                <input type="text" name="vehicle-brand" id="input-vehicle-brand"
-                                                    class="form-control" placeholder="Brand">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="text-center">
-                                    <button class="btn btn-primary mt-3 mb-2" type="button" onclick="handleSubmit()">
-                                        Generate Token
-                                    </button>
-                                </div>
-
-                            </form>
+                        <div class="table-responsive">
+                            <!-- Projects table -->
+                            <table class="table align-items-center table-flush">
+                                <thead class="thead-light">
+                                    <tr>
+                                        <th scope="col">Vehicle Number</th>
+                                        <th scope="col">Technician ID</th>
+                                        <th scope="col">Current Status</th>
+                                        <th scope="col">Job Card</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">
+                                            MH-20-CS-6159
+                                        </th>
+                                        <td>
+                                            002
+                                        </td>
+                                        <td>
+                                            Washing
+                                        </td>
+                                        <td>
+                                            <a href="#!" class="btn btn-sm btn-primary">View Card</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">
+                                            MH-21-CS-6159
+                                        </th>
+                                        <td>
+                                            005
+                                        </td>
+                                        <td>
+                                            Oil Change
+                                        </td>
+                                        <td>
+                                            <a href="#!" class="btn btn-sm btn-primary">View Card</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">
+                                            MH-05-CS-6159
+                                        </th>
+                                        <td>
+                                            003
+                                        </td>
+                                        <td>
+                                            Dent Removal
+                                        </td>
+                                        <td>
+                                            <a href="#!" class="btn btn-sm btn-primary">View Card</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">
+                                            MH-20-CS-6159
+                                        </th>
+                                        <td>
+                                            004
+                                        </td>
+                                        <td>
+                                            Bumper change
+                                        </td>
+                                        <td>
+                                            <a href="#!" class="btn btn-sm btn-primary">View Card</a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
@@ -495,6 +522,10 @@
         </div>
     </div>
 
+
+    <!-- Custom Js scripts -->
+    <script src="./custom-assets/js/supervisor.js"></script>
+
     <!-- Argon Scripts -->
     <!-- Core -->
     <script src="./assets/vendor/jquery/dist/jquery.min.js"></script>
@@ -504,16 +535,6 @@
     <script src="./assets/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js"></script>
     <!-- Argon JS -->
     <script src="./assets/js/argon.js?v=1.2.0"></script>
-    <script src="./custom-assets/js/reception.js"></script>
-
-
-    <!-- Firebase SDKs -->
-    <script src="https://www.gstatic.com/firebasejs/7.13.2/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/7.13.2/firebase-database.js"></script>
-
-    <!-- Firebase config -->
-    <script src="./custom-assets/js/firebase-config.js"></script>
-
 </body>
 
 </html>
