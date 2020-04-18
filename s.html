@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="Start your development with a Dashboard for Bootstrap 4.">
     <meta name="author" content="Creative Tim">
-    <title>Job Card | GM ERP</title>
+    <title>Supervisor | GM ERP</title>
     <!-- Favicon -->
     <link rel="icon" href="./assets/img/brand/favicon.png" type="image/png">
     <!-- Fonts -->
@@ -20,7 +20,6 @@
 </head>
 
 <body>
-
     <!-- Main content -->
     <div class="main-content" id="panel">
         <!-- Topnav -->
@@ -271,6 +270,7 @@
                 </div>
             </div>
         </nav>
+
         <!-- Header -->
         <!-- Header -->
         <div class="header bg-primary pb-6">
@@ -278,11 +278,16 @@
                 <div class="header-body">
                     <div class="row align-items-center py-4">
                         <div class="col-lg-6 col-7">
-                            <h6 class="h2 text-white d-inline-block mb-0">Vehicle Inspector</h6>
+                            <h6 class="h2 text-white d-inline-block mb-0">Default</h6>
                             <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
                                 <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
-                                    <li class="breadcrumb-item"><a href="#"><i class="fas fa-home"></i></a></li>
-                                    <li class="breadcrumb-item"><a href="#">Job Card</a></li>
+                                    <li class="breadcrumb-item">
+                                        <a href="#"><i class="fas fa-home"></i></a>
+                                    </li>
+                                    <li class="breadcrumb-item"><a href="#">Dashboards</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page">
+                                        Default
+                                    </li>
                                 </ol>
                             </nav>
                         </div>
@@ -291,164 +296,126 @@
                             <a href="#" class="btn btn-sm btn-neutral">Filters</a>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Page content -->
-        <div class="container-fluid mt--6">
-            <div class="row">
-                <div class="col-xl">
-
-                    <!-- Job Card -->
-                    <div class="card">
-                        <div class="card-header">
-                            <div class="row align-items-center">
-                                <div class="col-8">
-                                    <h3 class="mb-0">Job Card</h3>
-                                </div>
-                                <div class="col-4 text-right">
-                                    <a href="javascript:resetForm()" class="btn btn-sm btn-outline-primary">
-                                        Reset
-                                    </a>
+                    <!-- Card stats -->
+                    <div class="row">
+                        <div class="col-xl-3 col-md-6">
+                            <div class="card card-stats">
+                                <!-- Card body -->
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col">
+                                            <h5 class="card-title text-uppercase text-muted mb-0">
+                                                Total traffic
+                                            </h5>
+                                            <span class="h2 font-weight-bold mb-0">350,897</span>
+                                        </div>
+                                        <div class="col-auto">
+                                            <div
+                                                class="icon icon-shape bg-gradient-red text-white rounded-circle shadow">
+                                                <i class="ni ni-active-40"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <p class="mt-3 mb-0 text-sm">
+                                        <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 3.48%</span>
+                                        <span class="text-nowrap">Since last month</span>
+                                    </p>
                                 </div>
                             </div>
                         </div>
-                        <div class="card-body">
-                            <form id="jobcard-form">
+                        <div class="col-xl-3 col-md-6">
+                            <div class="card card-stats">
+                                <!-- Card body -->
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col">
+                                            <h5 class="card-title text-uppercase text-muted mb-0">
+                                                New users
+                                            </h5>
+                                            <span class="h2 font-weight-bold mb-0">2,356</span>
+                                        </div>
+                                        <div class="col-auto">
+                                            <div
+                                                class="icon icon-shape bg-gradient-orange text-white rounded-circle shadow">
+                                                <i class="ni ni-chart-pie-35"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <p class="mt-3 mb-0 text-sm">
+                                        <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 3.48%</span>
+                                        <span class="text-nowrap">Since last month</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-md-6">
+                            <div class="card card-stats">
+                                <!-- Card body -->
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col">
+                                            <h5 class="card-title text-uppercase text-muted mb-0">
+                                                Sales
+                                            </h5>
+                                            <span class="h2 font-weight-bold mb-0">924</span>
+                                        </div>
+                                        <div class="col-auto">
+                                            <div
+                                                class="icon icon-shape bg-gradient-green text-white rounded-circle shadow">
+                                                <i class="ni ni-money-coins"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <p class="mt-3 mb-0 text-sm">
+                                        <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 3.48%</span>
+                                        <span class="text-nowrap">Since last month</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-md-6">
+                            <div class="card card-stats">
+                                <!-- Card body -->
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col">
+                                            <h5 class="card-title text-uppercase text-muted mb-0">
+                                                Performance
+                                            </h5>
+                                            <span class="h2 font-weight-bold mb-0">49,65%</span>
+                                        </div>
+                                        <div class="col-auto">
+                                            <div
+                                                class="icon icon-shape bg-gradient-info text-white rounded-circle shadow">
+                                                <i class="ni ni-chart-bar-32"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <p class="mt-3 mb-0 text-sm">
+                                        <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 3.48%</span>
+                                        <span class="text-nowrap">Since last month</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-                                <!-- Vehicle -->
-                                <h6 class="heading-small text-muted mb-4">Vehicle information</h6>
-                                <div class="pl-lg-4">
-                                    <div class="row">
-                                        <div class="col-lg-4">
-                                            <div class="form-group">
-                                                <label class="form-control-label" for="input-vehicle-number">
-                                                    Registration number
-                                                </label>
-                                                <input type="text" id="input-vehicle-number" class="form-control"
-                                                    placeholder="XX-XX-XXXX" name="vehicle-number"  >
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-4">
-                                            <div class="form-group">
-                                                <label class="form-control-label" for="input-vehicle-brand">
-                                                    Brand
-                                                </label>
-                                                <input type="text" name="vehicle-brand" id="input-vehicle-brand"
-                                                    class="form-control" placeholder="Brand"  >
-                                            </div>
-                                        </div>
-                                         <div class="col-lg-4">
-                                            <div class="form-group">
-                                                <label class="form-control-label" for="input-vehicle-brand">
-                                                    Km Reading
-                                                </label>
-                                                <input type="text" name="vehicle-brand" id="input-vehicle-brand"
-                                                    class="form-control" placeholder="Km reading"  >
-                                            </div>
-                                        </div>
-                                         <div class="col-lg-4">
-                                            <div class="form-group">
-                                                <label class="form-control-label" for="input-vehicle-brand">
-                                                    Fuel Reading
-                                                </label>
-                                                <input type="text" name="vehicle-brand" id="input-vehicle-brand"
-                                                    class="form-control" placeholder="Fuel Reading"  >
-                                            </div>
-                                        </div>
-                                         <div class="col-lg-4">
-                                            <div class="form-group">
-                                                <label class="form-control-label" for="input-vehicle-brand">
-                                                    Can Customer Redeem Voucher
-                                                </label>
-                                                <input type="text" name="vehicle-brand" id="input-vehicle-brand"
-                                                    class="form-control" placeholder="yes/no"  >
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-4">
-                                            <div class="form-group">
-                                                <label class="form-control-label" for="input-email">
-                                                    Owner's Email address
-                                                </label>
-                                                <input type="email" id="input-email" name="email" class="form-control"
-                                                    placeholder="email@example.com"  >
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <hr class="my-4" />
-                               
-                                 <!-- Vehicle Inpection -->
-                                <h6 class="heading-small text-muted mb-4">Vehicle Inpection</h6>
-                                <div class="pl-lg-4">
-                                    <div class="row">
-                                        <div class="col-lg-4">
-                                            <div class="form-group">
-                                                <label class="form-control-label" for="input-vehicle-number">
-                                                    Legal Number Plate 
-                                                </label>
-                                                <input type="text" id="input-vehicle-number" class="form-control"
-                                                    placeholder="Comments" name="Comments"  >
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-4">
-                                            <div class="form-group">
-                                                <label class="form-control-label" for="input-vehicle-brand">
-                                                   Headlights Functions
-                                                </label>
-                                                <input type="text" name="vehicle-brand" id="input-vehicle-brand"
-                                                    class="form-control" placeholder="Comments"  >
-                                            </div>
-                                        </div>
-                                         <div class="col-lg-4">
-                                            <div class="form-group">
-                                                <label class="form-control-label" for="input-vehicle-brand">
-                                                    Tiers Functions
-                                                </label>
-                                                <input type="text" name="vehicle-brand" id="input-vehicle-brand"
-                                                    class="form-control" placeholder="Comments"  >
-                                            </div>
-                                        </div>
-                                         <div class="col-lg-4">
-                                            <div class="form-group">
-                                                <label class="form-control-label" for="input-vehicle-brand">
-                                                    Breaks And Horn Functions
-                                                </label>
-                                                <input type="text" name="vehicle-brand" id="input-vehicle-brand"
-                                                    class="form-control" placeholder="Comments"  >
-                                            </div>
-                                        </div>
-                                         <div class="col-lg-4">
-                                            <div class="form-group">
-                                                <label class="form-control-label" for="input-vehicle-brand">
-                                                    Airbags,Seatbelt And Mirror Condition
-                                                </label>
-                                                <input type="text" name="vehicle-brand" id="input-vehicle-brand"
-                                                    class="form-control" placeholder="Comments"  >
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-4">
-                                            <div class="form-group">
-                                                <label class="form-control-label" for="input-email">
-                                                    Other Necessary Upgrades
-                                                </label>
-                                                <input type="email" id="input-email" name="email" class="form-control"
-                                                    placeholder="Comments"  >
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <hr class="my-4" />
+
         <!-- Page content -->
-        <div class="container-fluid mt--4">
+        <div class="container-fluid mt--6">
             <div class="row">
                 <div class="col-xl mb-4">
                     <div class="card">
                         <div class="card-header border-0">
                             <div class="row align-items-center">
                                 <div class="col">
-                                    <h3 class="mb-0">Jobs</h3>
+                                    <h3 class="mb-0">Ongoing Jobs</h3>
+                                </div>
+                                <div class="col text-right">
+                                    <a href="#!" class="btn btn-sm btn-primary">See all</a>
                                 </div>
                             </div>
                         </div>
@@ -458,68 +425,106 @@
                                 <thead class="thead-light">
                                     <tr>
                                         <th scope="col">Vehicle Number</th>
-                                        <th scope="col">Job</th>
-                                        <th scope="col">Part</th>
-                                        <th scope="col">Comment</th>
+                                        <th scope="col">Technician ID</th>
+                                        <th scope="col">Current Status</th>
+                                        <th scope="col">Job Card</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
                                         <th scope="row">
-                                        <div class="col-s-3">
-                                            <div class="form-group">
-                                                <input type="text" name="vehicle-brand" id="input-vehicle-brand"
-                                                    class="form-control" placeholder="" >
-                                            </div>
-                                        </div>                                                                                      
+                                            MH-20-CS-6159
                                         </th>
                                         <td>
-                                        <div class="col-s-3">
-                                            <div class="form-group">
-                                                <input type="text" name="vehicle-brand" id="input-vehicle-brand"
-                                                    class="form-control" placeholder="" >
-                                            </div>
-                                        </div>                                            
+                                            002
                                         </td>
                                         <td>
-                                        <div class="col-s-3">
-                                            <div class="form-group">
-                                                <input type="text" name="vehicle-brand" id="input-vehicle-brand"
-                                                    class="form-control" placeholder=""  >
-                                            </div>
-                                        </div>                                            
+                                            Washing
                                         </td>
                                         <td>
-                                        <div class="col-s-3">
-                                            <div class="form-group">
-                                                <input type="text" name="vehicle-brand" id="input-vehicle-brand"
-                                                    class="form-control" placeholder=""  >
-                                            </div>
-                                        </div>         
+                                            <a href="#!" class="btn btn-sm btn-primary">View Card</a>
                                         </td>
                                     </tr>
-
+                                    <tr>
+                                        <th scope="row">
+                                            MH-21-CS-6159
+                                        </th>
+                                        <td>
+                                            005
+                                        </td>
+                                        <td>
+                                            Oil Change
+                                        </td>
+                                        <td>
+                                            <a href="#!" class="btn btn-sm btn-primary">View Card</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">
+                                            MH-05-CS-6159
+                                        </th>
+                                        <td>
+                                            003
+                                        </td>
+                                        <td>
+                                            Dent Removal
+                                        </td>
+                                        <td>
+                                            <a href="#!" class="btn btn-sm btn-primary">View Card</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">
+                                            MH-20-CS-6159
+                                        </th>
+                                        <td>
+                                            004
+                                        </td>
+                                        <td>
+                                            Bumper change
+                                        </td>
+                                        <td>
+                                            <a href="#!" class="btn btn-sm btn-primary">View Card</a>
+                                        </td>
+                                    </tr>
                                 </tbody>
                             </table>
-                                <div class="text-center">
-                                    <button class="btn btn-primary mt-1 mb-2" type="button" onclick="handleSubmit()">
-                                        Edit Job Card
-                                    </button>
-                                </div>
-                                <div class="text-center">
-                                    <button class="btn btn-primary mt-1 mb-2" type="button" onclick="handleSubmit()">
-                                        Confirm Job
-                                    </button>
-                                </div>                                                                 
                         </div>
                     </div>
                 </div>
             </div>
 
- 
+            <!-- Footer -->
+            <footer class="footer pt-0">
+                <div class="row align-items-center justify-content-lg-between">
+                    <div class="col-lg-6">
+                        <div class="copyright text-center  text-lg-left  text-muted">
+                            &copy; 2020 <a href="https://garage-management.herokuapp.com/" class="font-weight-bold ml-1"
+                                target="_blank">Garage Management ERP</a>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <ul class="nav nav-footer justify-content-center justify-content-lg-end">
+                            <li class="nav-item">
+                                <a href="https://github.com/ShantanuPhatke" class="nav-link"
+                                    target="_blank">Shantanu</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="https://github.com/Tarunmoses" class="nav-link" target="_blank">Tarun</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="https://github.com/mariodsouza21" class="nav-link" target="_blank">Mario</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+
 
     <!-- Custom Js scripts -->
-    <script src="./custom-assets/js/jobcard.js"></script>
+    <script src="./custom-assets/js/supervisor.js"></script>
 
     <!-- Argon Scripts -->
     <!-- Core -->
