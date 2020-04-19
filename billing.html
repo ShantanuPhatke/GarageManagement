@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="Start your development with a Dashboard for Bootstrap 4.">
     <meta name="author" content="Creative Tim">
-    <title>Supervisor | GM ERP</title>
+    <title>Billing | GM ERP</title>
     <!-- Favicon -->
     <link rel="icon" href="./assets/img/brand/favicon.png" type="image/png">
     <!-- Fonts -->
@@ -308,7 +308,7 @@
                         <div class="card-header border-0">
                             <div class="row align-items-center">
                                 <div class="col">
-                                    <h3 class="mb-0">Ongoing Jobs</h3>
+                                    <h3 class="mb-0">Completed Jobs</h3>
                                 </div>
                                 <div class="col text-right">
                                     <a href="#!" class="btn btn-sm btn-primary">See all</a>
@@ -321,9 +321,9 @@
                                 <thead class="thead-light">
                                     <tr>
                                         <th scope="col">Vehicle Number</th>
-                                        <th scope="col">Technician ID</th>
-                                        <th scope="col">Current Status</th>
-                                        <th scope="col">Job Card</th>
+                                        <th scope="col">Bill ID</th>
+                                        <th scope="col">Status</th>
+                                        <th scope="col">Bill</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -335,10 +335,10 @@
                                             002
                                         </td>
                                         <td>
-                                            Washing
+                                            Unpaid
                                         </td>
                                         <td>
-                                            <a href="#!" class="btn btn-sm btn-primary">View Card</a>
+                                            <a href="#!" class="btn btn-sm btn-primary">Generate</a>
                                         </td>
                                     </tr>
                                     <tr>
@@ -349,10 +349,10 @@
                                             005
                                         </td>
                                         <td>
-                                            Oil Change
+                                            Unpaid
                                         </td>
                                         <td>
-                                            <a href="#!" class="btn btn-sm btn-primary">View Card</a>
+                                            <a href="#!" class="btn btn-sm btn-primary">Generate</a>
                                         </td>
                                     </tr>
                                     <tr>
@@ -363,10 +363,10 @@
                                             003
                                         </td>
                                         <td>
-                                            Dent Removal
+                                            Unpaid
                                         </td>
                                         <td>
-                                            <a href="#!" class="btn btn-sm btn-primary">View Card</a>
+                                            <a href="#!" class="btn btn-sm btn-primary">Generate</a>
                                         </td>
                                     </tr>
                                     <tr>
@@ -377,10 +377,10 @@
                                             004
                                         </td>
                                         <td>
-                                            Bumper change
+                                            Paid
                                         </td>
                                         <td>
-                                            <a href="#!" class="btn btn-sm btn-primary">View Card</a>
+                                            <a href="#!" class="btn btn-sm btn-success">Show</a>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -416,21 +416,20 @@
                 </div>
             </footer>
         </div>
-    </div>
 
 
-    <!-- Custom Js scripts -->
-    <script src="./custom-assets/js/supervisor.js"></script>
+        <!-- Custom Js scripts -->
+        <script src="./custom-assets/js/billing.js"></script>
 
-    <!-- Argon Scripts -->
-    <!-- Core -->
-    <script src="./assets/vendor/jquery/dist/jquery.min.js"></script>
-    <script src="./assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="./assets/vendor/js-cookie/js.cookie.js"></script>
-    <script src="./assets/vendor/jquery.scrollbar/jquery.scrollbar.min.js"></script>
-    <script src="./assets/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js"></script>
-    <!-- Argon JS -->
-    <script src="./assets/js/argon.js?v=1.2.0"></script>
+        <!-- Argon Scripts -->
+        <!-- Core -->
+        <script src="./assets/vendor/jquery/dist/jquery.min.js"></script>
+        <script src="./assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="./assets/vendor/js-cookie/js.cookie.js"></script>
+        <script src="./assets/vendor/jquery.scrollbar/jquery.scrollbar.min.js"></script>
+        <script src="./assets/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js"></script>
+        <!-- Argon JS -->
+        <script src="./assets/js/argon.js?v=1.2.0"></script>
 </body>
 
 </html>
