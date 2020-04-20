@@ -20,6 +20,14 @@
 </head>
 
 <body>
+    <!-- Checking if user has already logged in -->
+    <script>
+        if (localStorage.getItem("user") === null) {
+            window.location = "./../../index.html";
+        }
+    </script>
+
+
     <!-- Main content -->
     <div class="main-content" id="panel">
 
