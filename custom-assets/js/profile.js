@@ -6,8 +6,6 @@ for (const username in usernameObjects) {
   usernameObjects[username].innerHTML = userData.name
 }
 
-function logout() {
+const logout = () => {
   localStorage.clear()
-  console.log("LOGGED OUT!");
-
 }

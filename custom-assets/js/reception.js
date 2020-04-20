@@ -83,3 +83,8 @@ const fetchTokenList = () => {
         // })
     })
 }
+
+
+const logout = () => {
+    localStorage.clear()
+}
