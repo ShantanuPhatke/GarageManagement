@@ -1,2 +1,2 @@
-# garagemanagement.github.io
+# garage-management
 Garage Management ERP Web App
