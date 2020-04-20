@@ -19,7 +19,15 @@
     <link rel="stylesheet" href="./assets/css/argon.css?v=1.2.0" type="text/css">
 </head>
 
-<body>
+<body onload="getData()">
+    <!-- Checking if user has already logged in -->
+    <script>
+        if (localStorage.getItem("user") === null) {
+            window.location = "./../../index.html";
+        }
+    </script>
+
+
     <!-- Main content -->
     <div class="main-content" id="panel">
 
@@ -261,7 +269,7 @@
                                     <span>Support</span>
                                 </a>
                                 <div class="dropdown-divider"></div>
-                                <a href="#!" class="dropdown-item">
+                                <a href="javascript:logout()" class="dropdown-item">
                                     <i class="ni ni-user-run"></i>
                                     <span>Logout</span>
                                 </a>
@@ -278,7 +286,7 @@
                 <div class="header-body">
                     <div class="row align-items-center py-4">
                         <div class="col-lg-6 col-7">
-                            <h6 class="h2 text-white d-inline-block mb-0">Hr</h6>
+                            <h6 class="h2 text-white d-inline-block mb-0">HR</h6>
                             <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
                                 <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
                                     <li class="breadcrumb-item">
@@ -308,7 +316,7 @@
                         <div class="card-header border-0">
                             <div class="row align-items-center">
                                 <div class="col">
-                                    <h3 class="mb-0">Technician Details
+                                    <h3 class="mb-0">Employee Details
                                     </h3>
                                 </div>
                                 <div class="col text-right">
@@ -321,86 +329,13 @@
                             <table class="table align-items-center table-flush">
                                 <thead class="thead-light">
                                     <tr>
-                                        <th scope="col">Technician Id</th>
+                                        <th scope="col">Employee Id</th>
                                         <th scope="col">Joining Date</th>
-                                        <th scope="col">Specilizations</th>
-                                        <th scope="col">Jobs Completed</th>
+                                        <th scope="col">Designation</th>
                                         <th scope="col">Salary</th>
                                     </tr>
                                 </thead>
-                                <tbody>
-                                    <tr>
-                                        <th scope="row">
-                                            MH-20-CS-6159
-                                        </th>
-                                        <td>
-                                            12/5/2019
-                                        </td>
-                                        <td>
-                                            In progress
-                                        </td>
-                                        <td>
-                                            In progress
-                                        </td>
-                                        <td>
-                                            80000
-                                        </td>
-                                        
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">
-                                            MH-21-CS-6159
-                                        </th>
-                                        <td>
-                                            6/4/2018
-                                        </td>
-                                        <td>
-                                            In progress
-                                        </td>
-                                        <td>
-                                            In progress
-                                        </td>
-                                        <td>
-                                            8000
-                                        </td>
-                                       
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">
-                                            MH-05-CS-6159
-                                        </th>
-                                        <td>
-                                            12/9/2013
-                                        </td>
-                                        <td>
-                                            In progress
-                                        </td>
-                                        <td>
-                                            In progress
-                                        </td>
-                                        <td>
-                                            8000
-                                        </td>
-                                        
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">
-                                            MH-20-CS-6159
-                                        </th>
-                                        <td>
-                                            1/1/2019
-                                        </td>
-                                        <td>
-                                            In progress
-                                        </td>
-                                        <td>
-                                            In progress
-                                        </td>
-                                        <td>
-                                            8000
-                                        </td>
-                                        <td></td>
-                                    </tr>
+                                <tbody id="employee-table">
                                 </tbody>
                             </table>
                         </div>
@@ -437,7 +372,14 @@
     </div>
 
     <!-- Custom Js scripts -->
-    <script src="./custom-assets/js/technician.js"></script>
+    <script src="./custom-assets/js/hr.js"></script>
+
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/7.13.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.13.2/firebase-database.js"></script>
+
+    <!-- Firebase config -->
+    <script src="./custom-assets/js/firebase-config.js"></script>
 
     <!-- Argon Scripts -->
     <!-- Core -->
