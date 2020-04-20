@@ -37,15 +37,3 @@ const getData = () => {
 
         });
 }
-
-const showItems = (data, key) => {
-    var html = ''
-    html += '<tr>'
-    $.each(data, function (key, value) {
-        html += '<td>' + value + '</td>';
-    });
-    html += '<td class="text-right"><a href="/" class="btn btn-primary btn-sm"><i class="fa fa-pencil"></i> Edit</a> <a href="/" class="btn btn-danger btn-sm"><i class="fa fa-times"></i> Delete</a></td>';
-    html += '</tr>';
-
-    $('#results').append(html);
-}

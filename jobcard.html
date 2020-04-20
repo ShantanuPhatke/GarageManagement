@@ -19,11 +19,13 @@
     <link rel="stylesheet" href="./assets/css/argon.css?v=1.2.0" type="text/css">
 </head>
 
-<body>
+<body onload="getData()">
     <!-- Checking if user has already logged in -->
     <script>
         if (localStorage.getItem("user") === null) {
             window.location = "./../../index.html";
+        } else if (localStorage.getItem("current_job") === null) {
+            window.location = "./../../technician.html"
         }
     </script>
 
@@ -313,11 +315,6 @@
                                 <div class="col-8">
                                     <h3 class="mb-0">Job Card</h3>
                                 </div>
-                                <div class="col-4 text-right">
-                                    <a href="javascript:resetForm()" class="btn btn-sm btn-outline-primary">
-                                        Reset
-                                    </a>
-                                </div>
                             </div>
                         </div>
                         <div class="card-body">
@@ -343,15 +340,6 @@
                                                 </label>
                                                 <input type="text" name="vehicle-brand" id="input-vehicle-brand"
                                                     class="form-control" placeholder="Brand" readonly>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-4">
-                                            <div class="form-group">
-                                                <label class="form-control-label" for="input-email">
-                                                    Owner's Email address
-                                                </label>
-                                                <input type="email" id="input-email" name="email" class="form-control"
-                                                    placeholder="email@example.com" readonly>
                                             </div>
                                         </div>
                                     </div>
@@ -413,6 +401,13 @@
             </footer>
         </div>
     </div>
+
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/7.13.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.13.2/firebase-database.js"></script>
+
+    <!-- Firebase config -->
+    <script src="./custom-assets/js/firebase-config.js"></script>
 
 
     <!-- Custom Js scripts -->
