@@ -26,13 +26,19 @@ function login() {
           console.log(userType);
 
           switch (userType) {
-            case "admin": window.location.href = "./../../profile.html"
-              break;
             case "receptionist": window.location.href = "./../../reception.html"
               break;
             case "supervisor": window.location.href = "./../../supervisor.html"
               break;
             case "technician": window.location.href = "./../../technician.html"
+              break;
+            case "wash": window.location.href = "./../../wash.html"
+              break;
+            case "inspector": window.location.href = "./../../inspector.html"
+              break;
+            case "billing": window.location.href = "./../../billing.html"
+              break;
+            case "hr": window.location.href = "./../../hr.html"
               break;
             default: window.location.href = "./../../index.html"
               break;

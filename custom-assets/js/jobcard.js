@@ -126,22 +126,4 @@ const fillJobCard = jobData => {
     mirrors.value = jobData.vehicle_condition.mirrors
 
 
-    // // Job details
-    // const jobTable = document.getElementById("job-table")
-    // const jobDetails = jobData.job_details.services
-    // var jobCount = Object.keys(jobDetails).length;
-    // console.log(jobDetails);
-
-    // let html = ''
-    // let srNo = 1
-    // for (let job in jobDetails) {
-    //     console.log(job);
-    //     for (let jobItem in job) {
-    //         console.log(jobItem);
-
-    //     }
-
-    // }
-    // jobTable.innerHTML = html
-
 }
