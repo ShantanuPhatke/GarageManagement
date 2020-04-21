@@ -71,6 +71,25 @@ const updateServiceStatus = (serviceId, newStatus) => {
     ref.child(serviceId).update({ 'status': newStatus })
 }
 
+
+const finishJob = () => {
+    const current_job = JSON.parse(localStorage.getItem("current_job"))
+    const current_user = JSON.parse(localStorage.getItem("user"))
+    const current_job_id = current_job.job_id
+    const user_id = current_user.uid
+
+    //Update status of job in Job
+    const jobRef = firebase.database().ref('jobs')
+    jobRef.child(current_job_id).update({ 'status': 'Completed' })
+
+    //Update status of job in Technician
+    const technicianRef = firebase.database().ref(`technicians/${user_id}/jobs`)
+    technicianRef.child(current_job_id).update({ 'status': 'Completed' })
+
+    window.location.href = "./../../technician.html"
+}
+
+
 const fillJobCard = jobData => {
 
     // Vehicle info

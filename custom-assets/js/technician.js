@@ -36,9 +36,10 @@ const fetchJobList = uid => {
                     html += job.child("status").val()
                     html += '</td>'
                     html += '<td>'
-                    if (job.child("status").val() == 'Completed') {
-                        html += '</td>'
-                        html += '</tr>'
+                    if (job.child("status").val() == "Completed") {
+                        html += `<a href="javascript: alert('Job already completed')" class="btn btn-sm btn-info">`
+                        html += 'Completed'
+                        html += '</a>'
                     } else if (job.child("status").val() == 'Not started') {
                         const currentJobID = job.child("job_id").val()
                         html += `<a href="javascript: startJob('${currentJobID}')" class="btn btn-sm btn-primary">`
@@ -50,6 +51,8 @@ const fetchJobList = uid => {
                         html += 'Resume'
                         html += '</a>'
                     }
+                    html += '</td>'
+                    html += '</tr>'
                 });
 
                 table.innerHTML = html
