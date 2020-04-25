@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="./assets/css/argon.css?v=1.2.0" type="text/css">
 </head>
 
-<body onload="setUsername()">
+<body onload="setUsername(); getBillDetails()">
     <!-- Checking if user has already logged in -->
     <script>
         if (localStorage.getItem("user") === null) {
@@ -300,10 +300,12 @@
                 <div class="col-md-10 ml-auto mr-auto">
                     <div class="card card-upgrade">
                         <div class="card-header text-center border-bottom-0 pb-0">
-                            <h4 class="card-title">Bill ID: <span>0032</span> | Vehicle Number:
-                                <span>MH-20-CS-6159</span>
+                            <h4 class="card-title">Bill ID: <span id="bill_id">0032</span> | Vehicle Number:
+                                <span id="vehicle_number">MH-20-CS-6159</span>
                             </h4>
-                            <p class="text-danger lead" style="margin: 10px;"><b>UNPAID</b></p>
+                            <span id="payment_status">
+                                <p class="text-danger lead" style="margin: 10px; font-weight: bold;"></p>
+                            </span>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive table-upgrade">
@@ -311,40 +313,11 @@
                                     <thead>
                                         <tr>
                                             <th class="text-center">Sr. No.</th>
-                                            <th class="text-center">Job</th>
+                                            <th class="text-center">Service</th>
                                             <th class="text-center">Cost</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td class="text-center">1.</td>
-                                            <td class="text-center">Servicing</td>
-                                            <td class="text-center">5500</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="text-center">2.</td>
-                                            <td class="text-center">Oil Change</td>
-                                            <td class="text-center">1500</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="text-center">3.</td>
-                                            <td class="text-center">Washing</td>
-                                            <td class="text-center">400</td>
-                                        </tr>
-                                        <tr>
-                                            <td></td>
-                                            <td class="text-center">Total Cost</td>
-                                            <td class="text-center">₹7400</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="text-center"></td>
-                                            <td class="text-center"></td>
-                                            <td class="text-center">
-                                                <a target="_blank" href="" class="btn btn-round btn-primary">
-                                                    Pay Bill
-                                                </a>
-                                            </td>
-                                        </tr>
+                                    <tbody id="bill-table">
                                     </tbody>
                                 </table>
                             </div>
@@ -384,8 +357,16 @@
         </div>
 
 
+        <!-- Firebase SDKs -->
+        <script src="https://www.gstatic.com/firebasejs/7.13.2/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.13.2/firebase-database.js"></script>
+
+        <!-- Firebase config -->
+        <script src="./custom-assets/js/firebase-config.js"></script>
+
+
         <!-- Custom Js scripts -->
-        <script src="./custom-assets/js/billing.js"></script>
+        <script src="./custom-assets/js/bill-view.js"></script>
 
         <!-- Argon Scripts -->
         <!-- Core -->

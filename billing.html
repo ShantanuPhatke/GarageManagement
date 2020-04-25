@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="./assets/css/argon.css?v=1.2.0" type="text/css">
 </head>
 
-<body onload="setUsername()">
+<body onload="setUsername(); fetchBillingList()">
     <!-- Checking if user has already logged in -->
     <script>
         if (localStorage.getItem("user") === null) {
@@ -316,67 +316,11 @@
                                     <tr>
                                         <th scope="col">Vehicle Number</th>
                                         <th scope="col">Bill ID</th>
-                                        <th scope="col">Status</th>
+                                        <th scope="col">Payment Status</th>
                                         <th scope="col">Bill</th>
                                     </tr>
                                 </thead>
-                                <tbody>
-                                    <tr>
-                                        <th scope="row">
-                                            MH-20-CS-6159
-                                        </th>
-                                        <td>
-                                            002
-                                        </td>
-                                        <td>
-                                            Unpaid
-                                        </td>
-                                        <td>
-                                            <a href="#!" class="btn btn-sm btn-primary">Generate</a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">
-                                            MH-21-CS-6159
-                                        </th>
-                                        <td>
-                                            005
-                                        </td>
-                                        <td>
-                                            Unpaid
-                                        </td>
-                                        <td>
-                                            <a href="#!" class="btn btn-sm btn-primary">Generate</a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">
-                                            MH-05-CS-6159
-                                        </th>
-                                        <td>
-                                            003
-                                        </td>
-                                        <td>
-                                            Unpaid
-                                        </td>
-                                        <td>
-                                            <a href="#!" class="btn btn-sm btn-primary">Generate</a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">
-                                            MH-20-CS-6159
-                                        </th>
-                                        <td>
-                                            004
-                                        </td>
-                                        <td>
-                                            Paid
-                                        </td>
-                                        <td>
-                                            <a href="#!" class="btn btn-sm btn-success">Show</a>
-                                        </td>
-                                    </tr>
+                                <tbody id="billing-table">
                                 </tbody>
                             </table>
                         </div>
@@ -411,6 +355,13 @@
             </footer>
         </div>
 
+
+        <!-- Firebase SDKs -->
+        <script src="https://www.gstatic.com/firebasejs/7.13.2/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.13.2/firebase-database.js"></script>
+
+        <!-- Firebase config -->
+        <script src="./custom-assets/js/firebase-config.js"></script>
 
         <!-- Custom Js scripts -->
         <script src="./custom-assets/js/billing.js"></script>

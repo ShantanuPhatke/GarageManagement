@@ -15,7 +15,7 @@ const logout = () => {
     window.location.href = "./../../index.html"
 }
 
-const fetchJobList = uid => {
+const fetchJobList = () => {
 
     const ref = firebase.database().ref("technicians")
     const table = document.getElementById("job-table")
