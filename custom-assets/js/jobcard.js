@@ -1,4 +1,5 @@
 const getData = () => {
+
     const current_job = JSON.parse(localStorage.getItem("current_job"))
     const current_job_id = current_job.job_id
 
@@ -36,21 +37,28 @@ const getData = () => {
                         html += '<td>'
                         html += currentServiceStatus
                         html += '</td>'
-                        html += '<td>'
-                        if (currentServiceStatus == "Not started") {
-                            html += `<a href="javascript: updateServiceStatus('${currentServiceId}', 'Working')" class="btn btn-sm btn-primary">`
-                            html += 'Start'
-                            html += '</a>'
-                        } else if (currentServiceStatus == "Working") {
-                            html += `<a href="javascript: updateServiceStatus('${currentServiceId}', 'Completed')" class="btn btn-sm btn-success">`
-                            html += 'Finish'
-                            html += '</a>'
-                        } else if (currentServiceStatus == "Completed") {
-                            html += `<a href="javascript: alert('Service already completed')" class="btn btn-sm btn-info">`
-                            html += 'Completed'
-                            html += '</a>'
+
+                        if (isTechnician()) {
+                            //Adds the column header
+                            const actionColumn = document.getElementById("actionColumn")
+                            actionColumn.innerHTML = 'Action'
+
+                            html += '<td>'
+                            if (currentServiceStatus == "Not started") {
+                                html += `<a href="javascript: updateServiceStatus('${currentServiceId}', 'Working')" class="btn btn-sm btn-primary">`
+                                html += 'Start'
+                                html += '</a>'
+                            } else if (currentServiceStatus == "Working") {
+                                html += `<a href="javascript: updateServiceStatus('${currentServiceId}', 'Completed')" class="btn btn-sm btn-success">`
+                                html += 'Finish'
+                                html += '</a>'
+                            } else if (currentServiceStatus == "Completed") {
+                                html += `<a href="javascript: alert('Service already completed')" class="btn btn-sm btn-info">`
+                                html += 'Completed'
+                                html += '</a>'
+                            }
+                            html += '</td>'
                         }
-                        html += '</td>'
                         html += '</tr>'
                     })
                     jobTable.innerHTML = html
@@ -63,6 +71,14 @@ const getData = () => {
         )
 
 }
+
+const isTechnician = () => {
+    const current_user = JSON.parse(localStorage.getItem("user"))
+    const current_uid = current_user.uid
+
+    return current_uid.startsWith("t")
+}
+
 
 const updateServiceStatus = (serviceId, newStatus) => {
     const current_job = JSON.parse(localStorage.getItem("current_job"))
