@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="./assets/css/argon.css?v=1.2.0" type="text/css">
 </head>
 
-<body>
+<body onload="setUsername()">
 
     <!-- Main content -->
     <div class="main-content" id="panel">
@@ -69,7 +69,7 @@
                                             <div class="col ml--2">
                                                 <div class="d-flex justify-content-between align-items-center">
                                                     <div>
-                                                        <h4 class="mb-0 text-sm">John Snow</h4>
+                                                        <h4 class="mb-0 text-sm username">John Snow</h4>
                                                     </div>
                                                     <div class="text-right text-muted">
                                                         <small>2 hrs ago</small>
@@ -89,7 +89,7 @@
                                             <div class="col ml--2">
                                                 <div class="d-flex justify-content-between align-items-center">
                                                     <div>
-                                                        <h4 class="mb-0 text-sm">John Snow</h4>
+                                                        <h4 class="mb-0 text-sm username">John Snow</h4>
                                                     </div>
                                                     <div class="text-right text-muted">
                                                         <small>3 hrs ago</small>
@@ -109,7 +109,7 @@
                                             <div class="col ml--2">
                                                 <div class="d-flex justify-content-between align-items-center">
                                                     <div>
-                                                        <h4 class="mb-0 text-sm">John Snow</h4>
+                                                        <h4 class="mb-0 text-sm username">John Snow</h4>
                                                     </div>
                                                     <div class="text-right text-muted">
                                                         <small>5 hrs ago</small>
@@ -129,7 +129,7 @@
                                             <div class="col ml--2">
                                                 <div class="d-flex justify-content-between align-items-center">
                                                     <div>
-                                                        <h4 class="mb-0 text-sm">John Snow</h4>
+                                                        <h4 class="mb-0 text-sm username">John Snow</h4>
                                                     </div>
                                                     <div class="text-right text-muted">
                                                         <small>2 hrs ago</small>
@@ -149,7 +149,7 @@
                                             <div class="col ml--2">
                                                 <div class="d-flex justify-content-between align-items-center">
                                                     <div>
-                                                        <h4 class="mb-0 text-sm">John Snow</h4>
+                                                        <h4 class="mb-0 text-sm username">John Snow</h4>
                                                     </div>
                                                     <div class="text-right text-muted">
                                                         <small>3 hrs ago</small>
@@ -222,7 +222,7 @@
                                         <img alt="Image placeholder" src="./assets/img/theme/team-4.jpg">
                                     </span>
                                     <div class="media-body  ml-2  d-none d-lg-block">
-                                        <span class="mb-0 text-sm  font-weight-bold">John Snow</span>
+                                        <span class="mb-0 text-sm  font-weight-bold username">John Snow</span>
                                     </div>
                                 </div>
                             </a>
@@ -247,7 +247,7 @@
                                     <span>Support</span>
                                 </a>
                                 <div class="dropdown-divider"></div>
-                                <a href="#!" class="dropdown-item">
+                                <a href="javascript: logout()" class="dropdown-item">
                                     <i class="ni ni-user-run"></i>
                                     <span>Logout</span>
                                 </a>
@@ -277,236 +277,235 @@
                 </div>
             </div>
         </div>
+    </div>
 
 
 
-        <!-- Job Card -->
-        <div class="card">
-            <div class="card-header">
-                <div class="row align-items-center">
-                    <div class="col-8">
-                        <h3 class="mb-0"></h3>
-                    </div>
-                    <div class="col-4 text-right">
-                        <a href="javascript:resetForm()" class="btn btn-sm btn-outline-primary">
-                            Reset
-                        </a>
-                    </div>
+    <!-- Job Card -->
+    <div class="card">
+        <div class="card-header">
+            <div class="row align-items-center">
+                <div class="col-8">
+                    <h3 class="mb-0"></h3>
+                </div>
+                <div class="col-4 text-right">
+                    <a href="javascript:resetForm()" class="btn btn-sm btn-outline-primary">
+                        Reset
+                    </a>
                 </div>
             </div>
-            <div class="card-body">
-                <form id="jobcard-form">
-                    <!-- Page content -->
-                    <div class="container-fluid mt--6">
-                        <div class="row">
-                            <div class="col-xl">
-                                <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-                                    <li class="nav-item">
-                                        <a class="nav-link active" id="pills-home-tab" data-toggle="pill"
-                                            href="#pills-home" role="tab" aria-controls="pills-home"
-                                            aria-selected="true">Profits</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" id="pills-profile-tab" data-toggle="pill"
-                                            href="#pills-profile" role="tab" aria-controls="pills-profile"
-                                            aria-selected="false">Staff Salaries</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" id="pills-contact-tab" data-toggle="pill"
-                                            href="#pills-contact" role="tab" aria-controls="pills-contact"
-                                            aria-selected="false">Stocks</a>
-                                    </li>
-                                </ul>
-                                <div class="tab-content pt-2 pl-1" id="pills-tabContent">
-                                    <div class="tab-pane fade show active" id="pills-home" role="tabpanel"
-                                        aria-labelledby="pills-home-tab">
-                                        <!-- Profits -->
-                                        <h4><b>Profits</b></h4>
-                                        <table class="table align-items-center table-flush">
-                                            <thead class="thead-light">
-                                                <tr>
-                                                    <th scope="col">Job Id</th>
-                                                    <th scope="col">Profits</th>
+        </div>
+        <div class="card-body">
+            <form id="jobcard-form">
+                <!-- Page content -->
+                <div class="container-fluid mt--6">
+                    <div class="row">
+                        <div class="col-xl">
+                            <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                                <li class="nav-item">
+                                    <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home"
+                                        role="tab" aria-controls="pills-home" aria-selected="true">Profits</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile"
+                                        role="tab" aria-controls="pills-profile" aria-selected="false">Staff
+                                        Salaries</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact"
+                                        role="tab" aria-controls="pills-contact" aria-selected="false">Stocks</a>
+                                </li>
+                            </ul>
+                            <div class="tab-content pt-2 pl-1" id="pills-tabContent">
+                                <div class="tab-pane fade show active" id="pills-home" role="tabpanel"
+                                    aria-labelledby="pills-home-tab">
+                                    <!-- Profits -->
+                                    <h4><b>Profits</b></h4>
+                                    <table class="table align-items-center table-flush">
+                                        <thead class="thead-light">
+                                            <tr>
+                                                <th scope="col">Job Id</th>
+                                                <th scope="col">Profits</th>
 
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <th scope="row">
-                                                        MH-20-CS-6159
-                                                    </th>
-                                                    <td>
-                                                        xyz
-                                                    </td>
-
-
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">
-                                                        MH-21-CS-6159
-                                                    </th>
-                                                    <td>
-                                                        xyz
-                                                    </td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">
+                                                    MH-20-CS-6159
+                                                </th>
+                                                <td>
+                                                    xyz
+                                                </td>
 
 
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">
-                                                        MH-05-CS-6159
-                                                    </th>
-                                                    <td>
-                                                        xyz
-                                                    </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">
+                                                    MH-21-CS-6159
+                                                </th>
+                                                <td>
+                                                    xyz
+                                                </td>
 
 
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">
-                                                        MH-20-CS-6159
-                                                    </th>
-                                                    <td>
-                                                        xyz
-                                                    </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">
+                                                    MH-05-CS-6159
+                                                </th>
+                                                <td>
+                                                    xyz
+                                                </td>
 
 
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                    <div class="tab-pane fade" id="pills-profile" role="tabpanel"
-                                        aria-labelledby="pills-profile-tab">
-                                        <!-- Salary -->
-
-                                        <h4 class=""><b>Expenses</b></h4>
-                                        <table class="table align-items-center table-flush">
-                                            <thead class="thead-light">
-                                                <tr>
-                                                    <th scope="col">Emp id</th>
-                                                    <th scope="col">Salary</th>
-
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <th scope="row">
-                                                        001
-                                                    </th>
-                                                    <td>
-                                                        xyz
-                                                    </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">
+                                                    MH-20-CS-6159
+                                                </th>
+                                                <td>
+                                                    xyz
+                                                </td>
 
 
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">
-                                                        002
-                                                    </th>
-                                                    <td>
-                                                        xyz
-                                                    </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="tab-pane fade" id="pills-profile" role="tabpanel"
+                                    aria-labelledby="pills-profile-tab">
+                                    <!-- Salary -->
+
+                                    <h4 class=""><b>Expenses</b></h4>
+                                    <table class="table align-items-center table-flush">
+                                        <thead class="thead-light">
+                                            <tr>
+                                                <th scope="col">Emp id</th>
+                                                <th scope="col">Salary</th>
+
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">
+                                                    001
+                                                </th>
+                                                <td>
+                                                    xyz
+                                                </td>
 
 
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">
-                                                        003
-                                                    </th>
-                                                    <td>
-                                                        xyz
-                                                    </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">
+                                                    002
+                                                </th>
+                                                <td>
+                                                    xyz
+                                                </td>
 
 
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">
-                                                        004
-                                                    </th>
-                                                    <td>
-                                                        xyz
-                                                    </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">
+                                                    003
+                                                </th>
+                                                <td>
+                                                    xyz
+                                                </td>
 
 
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                    <div class="tab-pane fade" id="pills-contact" role="tabpanel"
-                                        aria-labelledby="pills-contact-tab">
-                                        <!-- Stocks -->
-
-                                        <h4 class=""><b>Expenses</b></h4>
-                                        <table class="table align-items-center table-flush">
-                                            <thead class="thead-light">
-                                                <tr>
-                                                    <th scope="col">Stock id</th>
-                                                    <th scope="col">Stock costs </th>
-
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <th scope="row">
-                                                        ww234
-                                                    </th>
-                                                    <td>
-                                                        xyz
-                                                    </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">
+                                                    004
+                                                </th>
+                                                <td>
+                                                    xyz
+                                                </td>
 
 
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">
-                                                        ww234
-                                                    </th>
-                                                    <td>
-                                                        xyz
-                                                    </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="tab-pane fade" id="pills-contact" role="tabpanel"
+                                    aria-labelledby="pills-contact-tab">
+                                    <!-- Stocks -->
+
+                                    <h4 class=""><b>Expenses</b></h4>
+                                    <table class="table align-items-center table-flush">
+                                        <thead class="thead-light">
+                                            <tr>
+                                                <th scope="col">Stock id</th>
+                                                <th scope="col">Stock costs </th>
+
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">
+                                                    ww234
+                                                </th>
+                                                <td>
+                                                    xyz
+                                                </td>
 
 
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">
-                                                        ww234
-                                                    </th>
-                                                    <td>
-                                                        xyz
-                                                    </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">
+                                                    ww234
+                                                </th>
+                                                <td>
+                                                    xyz
+                                                </td>
 
 
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">
-                                                        ww234
-                                                    </th>
-                                                    <td>
-                                                        xyz
-                                                    </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">
+                                                    ww234
+                                                </th>
+                                                <td>
+                                                    xyz
+                                                </td>
 
 
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">
+                                                    ww234
+                                                </th>
+                                                <td>
+                                                    xyz
+                                                </td>
+
+
+                                            </tr>
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
                         </div>
                     </div>
-            </div>
+                </div>
         </div>
+    </div>
 
-        <!-- Custom Js scripts -->
-        <script src="./custom-assets/js/jobcard.js"></script>
+    <!-- Custom Js scripts -->
+    <script src="./custom-assets/js/accounts.js"></script>
 
-        <!-- Argon Scripts -->
-        <!-- Core -->
-        <script src="./assets/vendor/jquery/dist/jquery.min.js"></script>
-        <script src="./assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-        <script src="./assets/vendor/js-cookie/js.cookie.js"></script>
-        <script src="./assets/vendor/jquery.scrollbar/jquery.scrollbar.min.js"></script>
-        <script src="./assets/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js"></script>
-        <!-- Argon JS -->
-        <script src="./assets/js/argon.js?v=1.2.0"></script>
+    <!-- Argon Scripts -->
+    <!-- Core -->
+    <script src="./assets/vendor/jquery/dist/jquery.min.js"></script>
+    <script src="./assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="./assets/vendor/js-cookie/js.cookie.js"></script>
+    <script src="./assets/vendor/jquery.scrollbar/jquery.scrollbar.min.js"></script>
+    <script src="./assets/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js"></script>
+    <!-- Argon JS -->
+    <script src="./assets/js/argon.js?v=1.2.0"></script>
 </body>
 
 </html>

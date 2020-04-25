@@ -1,3 +1,15 @@
+const setUsername = () => {
+    const userData = JSON.parse(localStorage.getItem("user"))
+    const name = userData.name
+
+    const usernameElements = document.getElementsByClassName("username")
+
+    for (let x = 0; x < usernameElements.length; x++) {
+        usernameElements[x].innerHTML = name
+
+    }
+}
+
 const getData = () => {
 
     const current_job = JSON.parse(localStorage.getItem("current_job"))
@@ -77,19 +89,6 @@ const getData = () => {
             }
         )
 
-}
-
-
-const setUsername = () => {
-    const userData = JSON.parse(localStorage.getItem("user"))
-    const name = userData.name
-
-    const usernameElements = document.getElementsByClassName("username")
-
-    for (let x = 0; x < usernameElements.length; x++) {
-        usernameElements[x].innerHTML = name
-
-    }
 }
 
 
