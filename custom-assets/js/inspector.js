@@ -1,64 +1,12 @@
-//const resetForm = () => document.getElementById("form-generate-token").reset();
-
-// const handleSubmit = () => {
-//   const form = document.getElementById("ins-jobcard-form");
-//   let formData = new FormData(form);
-
-//   const email = formData.get("email");
-//   const vehicleNumber = formData.get("vehicle-number");
-//   const ref = firebase.database().ref("tarun/job");
-//   ref
-//     .orderByChild("email")
-//     .equalTo(email)
-//     .once("value", (snapshot) => {
-//       if (!snapshot.exists()) {
-//         const fname = formData.get("first-name");
-//         const lname = formData.get("last-name");
-//         const contact = formData.get("contact");
-//         const complainant = formData.get("complainant") == "on" ? "Yes" : "No";
-//         const address = formData.get("address");
-//         const city = formData.get("city");
-//         const postal = formData.get("postal");
-//         const vehicleBrand = formData.get("vehicle-brand");
-
-//         let customerKey = insertData(
-//           fname,
-//           lname,
-//           email,
-//           contact,
-//           complainant,
-//           address,
-//           city,
-//           postal,
-//           vehicleNumber,
-//           vehicleBrand
-//         );
-//         let tokenNumber = generateToken(customerKey, vehicleNumber);
-//         alert("Your token number is: " + tokenNumber);
-//       } else {
-//         let customerKey = Object.keys(snapshot.val())[0];
-//         firebase
-//           .database()
-//           .ref("customers")
-//           .child(customerKey)
-//           .child("complainant")
-//           .set(formData.get("complainant") == "on" ? "Yes" : "No");
-//         let tokenNumber = generateToken(customerKey, vehicleNumber);
-//         alert("Your token number is: " + tokenNumber);
-//         resetForm();
-//       }
-//     });
-// };
-
-//const JobRef = firebase.database().ref("tarun/job");
-
 let newJobKey = "";
+let jobCost = 0;
 
 const handleSubmit = command => {
 
   if (command == 'details') {
     newJobKey = insertDetails();
     alert(newJobKey);
+    document.getElementById("job-id").innerHTML = newJobKey;
   }
   if (command == 'inspection') {
     insertInspection(newJobKey);
@@ -66,17 +14,75 @@ const handleSubmit = command => {
   if (command == 'add') {
     addJob(newJobKey);
   }
+  if (command == 'confirm') {
+    confirmJob(newJobKey);
+  }
 }
+
+const confirmJob = (JobKey) => {
+
+  const form = document.getElementById("ins-jobcard-form");
+  let formData = new FormData(form);
+
+  const deliveryDate = formData.get("delivery-date");
+
+  const ref = firebase.database().ref("tarun/job").child(JobKey);
+
+  ref.update({ 'deliveryDate': deliveryDate });
+  ref.update({ 'jobCost': jobCost });
+
+  //clear data
+  newJobKey = "";
+  jobCost = "";
+  window.location.href = "./../../inspector.html"
+};
+
+
+
+const addJob = (JobKey) => {
+
+  const form = document.getElementById("ins-jobcard-form");
+  let formData = new FormData(form);
+  const serial = formData.get("work-serial");
+  const work = formData.get("work");
+  const part = formData.get("work-part");
+  const comment = formData.get("work-comment");
+  const cost = formData.get("work-cost");
+
+  jobCost = parseInt(jobCost) + parseInt(cost);
+  //const costElement = document.getElementById("est-job-cost");
+  //document.getElementById("tesst").innerHTML('Rs ' + jobCost)
+  document.getElementById("est-job-cost").innerHTML = 'Rs ' + jobCost;
+
+  const ref = firebase.database().ref("tarun/job").child(JobKey);
+  // let newJobRef = ref.push({
+  //   headlights: vn,
+  //   mirrors: vm,
+  //   turnIndicators: cm,
+  //   fuelRreading: ca,
+  //   kmReading: di
+  // });
+
+  ref.child("jobList").child('service_00' + serial).set({
+    serial: serial,
+    work: work,
+    part: part,
+    comment: comment,
+    cost: cost
+  })
+  //alert(jobCost);
+  //return newJobRef.key;
+};
 
 const insertInspection = (JobKey) => {
 
   const form = document.getElementById("ins-jobcard-form");
   let formData = new FormData(form);
-  const vn = formData.get("ins-headlights");
-  const vm = formData.get("ins-mirrors");
-  const cm = formData.get("ins-turn-indicators");
-  const ca = formData.get("ins-fuel-reading");
-  const di = formData.get("ins-km-reading");
+  const headlights = formData.get("ins-headlights");
+  const mirrors = formData.get("ins-mirrors");
+  const turnIndicators = formData.get("ins-turn-indicators");
+  const fuelRreading = formData.get("ins-fuel-reading");
+  const kmReading = formData.get("ins-km-reading");
 
   const ref = firebase.database().ref("tarun/job").child(JobKey);
   // let newJobRef = ref.push({
@@ -88,11 +94,11 @@ const insertInspection = (JobKey) => {
   // });
 
   ref.child("vehicleCondition").set({
-    headlights: vn,
-    mirrors: vm,
-    turnIndicators: cm,
-    fuelRreading: ca,
-    kmReading: di
+    headlights: headlights,
+    mirrors: mirrors,
+    turnIndicators: turnIndicators,
+    fuelRreading: fuelRreading,
+    kmReading: kmReading
   })
 
   //return newJobRef.key;
@@ -102,19 +108,19 @@ const insertDetails = () => {
 
   const form = document.getElementById("ins-jobcard-form");
   let formData = new FormData(form);
-  const vn = formData.get("vehicle-number");
-  const vm = formData.get("vehicle-model");
-  const cm = formData.get("customer-mobile");
-  const ca = formData.get("customer-address");
-  const di = formData.get("discount");
+  const vehicleNumber = formData.get("vehicle-number");
+  const vehicleModel = formData.get("vehicle-model");
+  const customerMobile = formData.get("customer-mobile");
+  const customerAddress = formData.get("customer-address");
+  const discount = formData.get("discount");
 
   const ref = firebase.database().ref("tarun/job");
   let newJobRef = ref.push({
-    vehicleNumber: vn,
-    vehicleModel: vm,
-    customerMobile: cm,
-    customerAddress: ca,
-    discount: di
+    vehicleNumber: vehicleNumber,
+    vehicleModel: vehicleModel,
+    customerMobile: customerMobile,
+    customerAddress: customerAddress,
+    discount: discount
   });
   return newJobRef.key;
 };
