@@ -1,171 +1,136 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
 
-    <title>Home | GM ERP</title>
-    <!-- Favicon -->
-    <link href="/assets/img/brand/favicon.png" rel="icon" type="image/png" />
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
-    <!-- Fonts -->
-    <link
-      href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700"
-      rel="stylesheet"
-    />
+  <title>Home | GM ERP</title>
+  <!-- Favicon -->
+  <link href="/assets/img/brand/favicon.png" rel="icon" type="image/png" />
 
-    <!-- Icons -->
-    <link href="/assets/vendor/nucleo/css/nucleo.min.css" rel="stylesheet" />
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
 
-    <link
-      href="/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css"
-      rel="stylesheet"
-    />
+  <!-- Icons -->
+  <link href="/assets/vendor/nucleo/css/nucleo.min.css" rel="stylesheet" />
 
-    <!-- Argon CSS -->
-    <link type="text/css" href="/assets/css/argon.min.css" rel="stylesheet" />
+  <link href="/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet" />
 
-  </head>
+  <!-- Argon CSS -->
+  <link type="text/css" href="/assets/css/argon.min.css" rel="stylesheet" />
 
-  <body class="bg-default">
-    
-    <!-- Checking if user has already logged in -->
-    <script>
-      if (!(localStorage.getItem("user") === null)) {
-        window.location = "./../../profile.html";
-      }
-    </script>
+</head>
 
-    
-    <!-- Main content -->
-    <div class="main-content">
-      <!-- Header -->
-      <div class="header bg-gradient-primary py-5">
-        <div class="container">
-          <div class="header-body text-center mb-7">
-            <div class="row justify-content-center">
-              <div class="col-xl-5 col-lg-6 col-md-8 px-5">
-                <h1 class="text-white">Welcome!</h1>
-                <p class="text-lead text-white">
-                  Garage Management ERP System for providing optimal work
-                  efficiency at a garage!
-                </p>
-              </div>
+<body class="bg-default">
+
+  <!-- Checking if user has already logged in -->
+  <script>
+    if (!(localStorage.getItem("user") === null)) {
+      // window.location = "./../../profile.html";
+    }
+  </script>
+
+
+  <!-- Main content -->
+  <div class="main-content">
+    <!-- Header -->
+    <div class="header bg-gradient-primary py-5">
+      <div class="container">
+        <div class="header-body text-center mb-7">
+          <div class="row justify-content-center">
+            <div class="col-xl-5 col-lg-6 col-md-8 px-5">
+              <h1 class="text-white">Welcome!</h1>
+              <p class="text-lead text-white">
+                Garage Management ERP System for providing optimal work
+                efficiency at a garage!
+              </p>
             </div>
           </div>
         </div>
-        <div class="separator separator-bottom separator-skew zindex-100">
-          <svg
-            x="0"
-            y="0"
-            viewBox="0 0 2560 100"
-            preserveAspectRatio="none"
-            version="1.1"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <polygon
-              class="fill-default"
-              points="2560 0 2560 100 0 100"
-            ></polygon>
-          </svg>
-        </div>
       </div>
-      <!-- Page content -->
-      <div class="container mt--8 pb-5">
-        <div class="row justify-content-center">
-          <div class="col-lg-5 col-md-7">
-            <div class="card bg-secondary border-0 mb-0">
-              <div class="card-body px-lg-5 py-lg-5">
-                <form role="form">
-                  <div class="form-group mb-3">
-                    <div class="input-group input-group-merge input-group-alternative">
-                      <div class="input-group-prepend">
-                        <span class="input-group-text">
-                          <i class="ni ni-email-83"></i>
-                        </span>
-                      </div>
-                      <input
-                        class="form-control"
-                        placeholder="Uid"
-                        type="text"
-                        id="uid_field"
-                      />
+      <div class="separator separator-bottom separator-skew zindex-100">
+        <svg x="0" y="0" viewBox="0 0 2560 100" preserveAspectRatio="none" version="1.1"
+          xmlns="http://www.w3.org/2000/svg">
+          <polygon class="fill-default" points="2560 0 2560 100 0 100"></polygon>
+        </svg>
+      </div>
+    </div>
+    <!-- Page content -->
+    <div class="container mt--8 pb-5">
+      <div class="row justify-content-center">
+        <div class="col-lg-5 col-md-7">
+          <div class="card bg-secondary border-0 mb-0">
+            <div class="card-body px-lg-5 py-lg-5">
+              <form role="form" onsubmit="login(); return false;">
+                <div class="form-group mb-3">
+                  <div class="input-group input-group-merge input-group-alternative">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">
+                        <i class="ni ni-email-83"></i>
+                      </span>
                     </div>
+                    <input class="form-control" placeholder="Uid" type="text" id="uid_field" />
                   </div>
-                  <div class="form-group">
-                    <div class="input-group input-group-merge input-group-alternative">
-                      <div class="input-group-prepend">
-                        <span class="input-group-text">
-                          <i class="ni ni-lock-circle-open"></i>
-                        </span>
-                      </div>
-                      <input
-                        class="form-control"
-                        placeholder="Password"
-                        type="password"
-                        id="password_field"
-                      />
+                </div>
+                <div class="form-group">
+                  <div class="input-group input-group-merge input-group-alternative">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">
+                        <i class="ni ni-lock-circle-open"></i>
+                      </span>
                     </div>
+                    <input class="form-control" placeholder="Password" type="password" id="password_field" />
                   </div>
-                  <div class="custom-control custom-control-alternative custom-checkbox">
-                    <input
-                      class="custom-control-input"
-                      id=" customCheckLogin"
-                      type="checkbox"
-                    />
-                    <label class="custom-control-label" for=" customCheckLogin">
-                      <span class="text-muted">Remember me</span>
-                    </label>
-                  </div>
-                  <div class="text-center">
-                    <button
-                      type="button"
-                      class="btn btn-primary my-4"
-                      onclick="login()"
-                    >
-                      Sign in
-                    </button>
-                  </div>
-                </form>
-              </div>
+                </div>
+                <div class="custom-control custom-control-alternative custom-checkbox">
+                  <input class="custom-control-input" id=" customCheckLogin" type="checkbox" />
+                  <label class="custom-control-label" for=" customCheckLogin">
+                    <span class="text-muted">Remember me</span>
+                  </label>
+                </div>
+                <div class="text-center">
+                  <button type="submit" class="btn btn-primary my-4">
+                    Sign in
+                  </button>
+                </div>
+              </form>
             </div>
-            <div class="row mt-3">
-              <div class="col-6">
-                <a href="#" class="text-light">
-                  <small>Forgot password?</small>
-                </a>
-              </div>
-              <div class="col-6 text-right">
-                <a href="#" class="text-light">
-                  <small>Request new account</small>
-                  </a>
-              </div>
+          </div>
+          <div class="row mt-3">
+            <div class="col-6">
+              <a href="#" class="text-light">
+                <small>Forgot password?</small>
+              </a>
+            </div>
+            <div class="col-6 text-right">
+              <a href="#" class="text-light">
+                <small>Request new account</small>
+              </a>
             </div>
           </div>
         </div>
       </div>
     </div>
+  </div>
 
 
-    <!-- Core -->
-    <script src="/assets/vendor/jquery/dist/jquery.min.js"></script>
-    <script src="/assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Core -->
+  <script src="/assets/vendor/jquery/dist/jquery.min.js"></script>
+  <script src="/assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 
-    <!-- Argon JS -->
-    <script src="/assets/js/argon.min.js"></script>
+  <!-- Argon JS -->
+  <script src="/assets/js/argon.min.js"></script>
 
-    <!-- Firebase SDKs -->
-    <script src="https://www.gstatic.com/firebasejs/7.13.2/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/7.13.2/firebase-database.js"></script>
-    <!-- <script src="https://www.gstatic.com/firebasejs/7.13.2/firebase-auth.js"></script> -->
+  <!-- Firebase SDKs -->
+  <script src="https://www.gstatic.com/firebasejs/7.13.2/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.13.2/firebase-database.js"></script>
 
-    <!-- Firebase config -->
-    <script src="./custom-assets/js/firebase-config.js"></script>
+  <!-- Firebase config -->
+  <script src="./custom-assets/js/firebase-config.js"></script>
 
-    <!-- Firebase auth -->
-    <script src="./custom-assets/js/index.js"></script>
-  </body>
+  <!-- Custom scripts -->
+  <script src="./custom-assets/js/index.js"></script>
+</body>
+
 </html>

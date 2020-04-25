@@ -1,4 +1,2 @@
-# garagemanagement.github.io
-
+# garage-management
 Garage Management ERP Web App
-を失うことは私の呪いです

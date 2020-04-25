@@ -1,6 +1,3 @@
-
-
-
 function login() {
   const uid = document.getElementById("uid_field").value;
   const password = document.getElementById("password_field").value;
@@ -16,15 +13,36 @@ function login() {
         if (password == snapshot.child(uid).child("password").val()) {
 
           const userData = snapshot.child(uid);
-          console.log(userData);
+          // console.log(userData);
 
           const userDetails = {
             uid: userData.child("uid").val(),
             name: userData.child("name").val(),
+            type: userData.child("type").val()
           };
-
           localStorage.setItem("user", JSON.stringify(userDetails));
-          window.location.href = "./../../profile.html";
+
+          const userType = userData.child("type").val()
+          console.log(userType);
+
+          switch (userType) {
+            case "receptionist": window.location.href = "./../../reception.html"
+              break;
+            case "supervisor": window.location.href = "./../../supervisor.html"
+              break;
+            case "technician": window.location.href = "./../../technician.html"
+              break;
+            case "wash": window.location.href = "./../../wash.html"
+              break;
+            case "inspector": window.location.href = "./../../inspector.html"
+              break;
+            case "billing": window.location.href = "./../../billing.html"
+              break;
+            case "hr": window.location.href = "./../../hr.html"
+              break;
+            default: window.location.href = "./../../index.html"
+              break;
+          }
 
         } else {
           let errorMessage = "Invalid password";
@@ -36,45 +54,4 @@ function login() {
       }
 
     });
-}
-
-// firebase.auth().onAuthStateChanged(function (user) {
-//   if (user) {
-//     // User is signed in.
-
-//     window.location.href = "./../../page2.html";
-
-//     // document.getElementById("user_div").style.display = "block";
-//     // document.getElementById("login_div").style.display = "none";
-
-//     var user = firebase.auth().currentUser;
-
-//     // if (user != null) {
-//     //   var email_id = user.email;
-//     //   document.getElementById("user_para").innerHTML =
-//     //     "Welcome User : " + email_id;
-//     // }
-//   }
-// });
-
-// function login() {
-//   var userEmail = document.getElementById("email_field").value;
-//   var userPass = document.getElementById("password_field").value;
-
-//   firebase
-//     .auth()
-//     .signInWithEmailAndPassword(userEmail, userPass)
-//     .catch(function (error) {
-//       // Handle Errors here.
-//       var errorCode = error.code;
-//       var errorMessage = error.message;
-
-//       window.alert("Error : " + errorMessage);
-
-//       // ...
-//     });
-// }
-
-function logout() {
-  firebase.auth().signOut();
 }

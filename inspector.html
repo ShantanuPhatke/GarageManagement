@@ -19,7 +19,14 @@
   <link rel="stylesheet" href="./assets/css/argon.css?v=1.2.0" type="text/css" />
 </head>
 
-<body>
+<body onload="setUsername()">
+    <!-- Checking if user has already logged in -->
+    <script>
+        if (localStorage.getItem("user") === null) {
+            window.location = "./../../index.html";
+        }
+    </script>
+  
   <!-- Main content -->
   <div class="main-content" id="panel">
     <!-- Topnav -->
@@ -49,7 +56,7 @@
                     <img alt="Image placeholder" src="./assets/img/theme/team-4.jpg" />
                   </span>
                   <div class="media-body ml-2 d-none d-lg-block">
-                    <span class="mb-0 text-sm font-weight-bold">John Snow</span>
+                    <span class="mb-0 text-sm font-weight-bold username">John Snow</span>
                   </div>
                 </div>
               </a>
