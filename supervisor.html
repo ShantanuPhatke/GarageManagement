@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="./assets/css/argon.css?v=1.2.0" type="text/css">
 </head>
 
-<body>
+<body onload="fetchJobList()">
     <!-- Checking if user has already logged in -->
     <script>
         if (localStorage.getItem("user") === null) {
@@ -316,67 +316,12 @@
                                     <tr>
                                         <th scope="col">Vehicle Number</th>
                                         <th scope="col">Technician ID</th>
+                                        <th scope="col">Job ID</th>
                                         <th scope="col">Current Status</th>
                                         <th scope="col">Job Card</th>
                                     </tr>
                                 </thead>
-                                <tbody>
-                                    <tr>
-                                        <th scope="row">
-                                            MH-20-CS-6159
-                                        </th>
-                                        <td>
-                                            002
-                                        </td>
-                                        <td>
-                                            Washing
-                                        </td>
-                                        <td>
-                                            <a href="#!" class="btn btn-sm btn-primary">View Card</a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">
-                                            MH-21-CS-6159
-                                        </th>
-                                        <td>
-                                            005
-                                        </td>
-                                        <td>
-                                            Oil Change
-                                        </td>
-                                        <td>
-                                            <a href="#!" class="btn btn-sm btn-primary">View Card</a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">
-                                            MH-05-CS-6159
-                                        </th>
-                                        <td>
-                                            003
-                                        </td>
-                                        <td>
-                                            Dent Removal
-                                        </td>
-                                        <td>
-                                            <a href="#!" class="btn btn-sm btn-primary">View Card</a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">
-                                            MH-20-CS-6159
-                                        </th>
-                                        <td>
-                                            004
-                                        </td>
-                                        <td>
-                                            Bumper change
-                                        </td>
-                                        <td>
-                                            <a href="#!" class="btn btn-sm btn-primary">View Card</a>
-                                        </td>
-                                    </tr>
+                                <tbody id="job-table">
                                 </tbody>
                             </table>
                         </div>
@@ -412,6 +357,13 @@
         </div>
     </div>
 
+
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/7.13.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.13.2/firebase-database.js"></script>
+
+    <!-- Firebase config -->
+    <script src="./custom-assets/js/firebase-config.js"></script>
 
     <!-- Custom Js scripts -->
     <script src="./custom-assets/js/supervisor.js"></script>
