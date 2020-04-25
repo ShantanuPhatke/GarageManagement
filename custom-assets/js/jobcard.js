@@ -22,7 +22,7 @@ const getData = () => {
                         const currentServiceId = service.child("service_id").val()
                         const currentServiceName = service.child("service_name").val()
                         const currentServiceStatus = service.child("status").val()
-                        console.log(currentServiceName);
+                        // console.log(currentServiceName);
 
                         html += '<tr>'
                         html += '<td>'
@@ -43,6 +43,10 @@ const getData = () => {
                             const actionColumn = document.getElementById("actionColumn")
                             actionColumn.innerHTML = 'Action'
 
+                            //Adds user type in breadcrum
+                            const userType = document.getElementById("userType")
+                            userType.innerHTML = 'Technician'
+
                             html += '<td>'
                             if (currentServiceStatus == "Not started") {
                                 html += `<a href="javascript: updateServiceStatus('${currentServiceId}', 'Working')" class="btn btn-sm btn-primary">`
@@ -58,6 +62,9 @@ const getData = () => {
                                 html += '</a>'
                             }
                             html += '</td>'
+                        } else {
+                            const userType = document.getElementById("userType")
+                            userType.innerHTML = 'SUPERVISOR'
                         }
                         html += '</tr>'
                     })
@@ -71,6 +78,20 @@ const getData = () => {
         )
 
 }
+
+
+const setUsername = () => {
+    const userData = JSON.parse(localStorage.getItem("user"))
+    const name = userData.name
+
+    const usernameElements = document.getElementsByClassName("username")
+
+    for (let x = 0; x < usernameElements.length; x++) {
+        usernameElements[x].innerHTML = name
+
+    }
+}
+
 
 const isTechnician = () => {
     const current_user = JSON.parse(localStorage.getItem("user"))

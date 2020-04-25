@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="./assets/css/argon.css?v=1.2.0" type="text/css">
 </head>
 
-<body onload="getData()">
+<body onload="setUsername(); getData()">
     <!-- Checking if user has already logged in -->
     <script>
         if (localStorage.getItem("user") === null) {
@@ -78,7 +78,7 @@
                                             <div class="col ml--2">
                                                 <div class="d-flex justify-content-between align-items-center">
                                                     <div>
-                                                        <h4 class="mb-0 text-sm">John Snow</h4>
+                                                        <h4 class="mb-0 text-sm username">John Snow</h4>
                                                     </div>
                                                     <div class="text-right text-muted">
                                                         <small>2 hrs ago</small>
@@ -98,7 +98,7 @@
                                             <div class="col ml--2">
                                                 <div class="d-flex justify-content-between align-items-center">
                                                     <div>
-                                                        <h4 class="mb-0 text-sm">John Snow</h4>
+                                                        <h4 class="mb-0 text-sm username">John Snow</h4>
                                                     </div>
                                                     <div class="text-right text-muted">
                                                         <small>3 hrs ago</small>
@@ -118,7 +118,7 @@
                                             <div class="col ml--2">
                                                 <div class="d-flex justify-content-between align-items-center">
                                                     <div>
-                                                        <h4 class="mb-0 text-sm">John Snow</h4>
+                                                        <h4 class="mb-0 text-sm username">John Snow</h4>
                                                     </div>
                                                     <div class="text-right text-muted">
                                                         <small>5 hrs ago</small>
@@ -138,7 +138,7 @@
                                             <div class="col ml--2">
                                                 <div class="d-flex justify-content-between align-items-center">
                                                     <div>
-                                                        <h4 class="mb-0 text-sm">John Snow</h4>
+                                                        <h4 class="mb-0 text-sm username">John Snow</h4>
                                                     </div>
                                                     <div class="text-right text-muted">
                                                         <small>2 hrs ago</small>
@@ -158,7 +158,7 @@
                                             <div class="col ml--2">
                                                 <div class="d-flex justify-content-between align-items-center">
                                                     <div>
-                                                        <h4 class="mb-0 text-sm">John Snow</h4>
+                                                        <h4 class="mb-0 text-sm username">John Snow</h4>
                                                     </div>
                                                     <div class="text-right text-muted">
                                                         <small>3 hrs ago</small>
@@ -231,7 +231,7 @@
                                         <img alt="Image placeholder" src="./assets/img/theme/team-4.jpg">
                                     </span>
                                     <div class="media-body  ml-2  d-none d-lg-block">
-                                        <span class="mb-0 text-sm  font-weight-bold">John Snow</span>
+                                        <span class="mb-0 text-sm  font-weight-bold username">John Snow</span>
                                     </div>
                                 </div>
                             </a>
@@ -273,7 +273,7 @@
                 <div class="header-body">
                     <div class="row align-items-center py-4">
                         <div class="col-lg-6 col-7">
-                            <h6 class="h2 text-white d-inline-block mb-0">Supervisor</h6>
+                            <h6 class="h2 text-white d-inline-block mb-0" id="userType"></h6>
                             <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
                                 <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
                                     <li class="breadcrumb-item"><a href="#"><i class="fas fa-home"></i></a></li>
