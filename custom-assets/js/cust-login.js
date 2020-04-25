@@ -19,7 +19,7 @@ function login() {
           };
 
           localStorage.setItem("user", JSON.stringify(userDetails));
-          window.location.href = "./../../cust-current-job.html";
+          window.location.href = "./../../cust-job-history.html";
         } else {
           let errorMessage = "Invalid password";
           alert(errorMessage);
