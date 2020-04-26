@@ -17,9 +17,9 @@ const getData = () => {
 
     const refJobs = firebase.database().ref('jobs')
     refJobs
-        .orderByChild("job_id")
+        .orderByKey()
         .equalTo(current_job_id)
-        .on(
+        .once(
             "value", snapshot => {
                 if (snapshot.exists()) {
                     const jobData = snapshot.child(current_job_id).val()
@@ -30,7 +30,7 @@ const getData = () => {
                     const jobTable = document.getElementById("job-table")
                     let html = ''
                     let srNo = 1
-                    snapshot.child(current_job_id).child("job_details").child("services").forEach(service => {
+                    snapshot.child(current_job_id).child("services").forEach(service => {
                         const currentServiceId = service.child("service_id").val()
                         const currentServiceName = service.child("service_name").val()
                         const currentServiceStatus = service.child("status").val()
@@ -54,6 +54,10 @@ const getData = () => {
                             //Adds the column header
                             const actionColumn = document.getElementById("actionColumn")
                             actionColumn.innerHTML = 'Action'
+
+                            //Adds finish job button
+                            const finishButton = document.getElementById("finishButton")
+                            finishButton.innerHTML = '<button class="btn btn-primary mt-3 mb-2" type="button" onclick="finishJob()">Finish Job</button>'
 
                             //Adds user type in breadcrum
                             const userType = document.getElementById("userType")
@@ -103,7 +107,7 @@ const isTechnician = () => {
 const updateServiceStatus = (serviceId, newStatus) => {
     const current_job = JSON.parse(localStorage.getItem("current_job"))
     const current_job_id = current_job.job_id
-    const ref = firebase.database().ref(`jobs/${current_job_id}/job_details/services`)
+    const ref = firebase.database().ref(`jobs/${current_job_id}/services`)
     ref.child(serviceId).update({ 'status': newStatus })
 }
 
