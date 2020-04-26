@@ -33,9 +33,10 @@ const handleSubmit = () => {
                 const postal = formData.get('postal')
                 const vehicleBrand = formData.get('vehicle-brand')
 
-                let customerKey = insertData(fname, lname, email, contact, complainant, address, city, postal, vehicleNumber, vehicleBrand);
-                let tokenNumber = generateToken(customerKey, vehicleNumber)
+                let customerUid = insertData(fname, lname, email, contact, complainant, address, city, postal, vehicleNumber, vehicleBrand);
+                let tokenNumber = generateToken(customerUid, vehicleNumber)
                 alert("Your token number is: " + tokenNumber)
+                resetForm()
 
             } else {
                 let customerKey = Object.keys(snapshot.val())[0]
@@ -53,6 +54,7 @@ const handleSubmit = () => {
 const insertData = (fname, lname, email, contact, complainant, address, city, postal, vehicleNumber, vehicleBrand) => {
 
     const ref = firebase.database().ref('customers')
+    const customerUid = 'c' + Math.floor(Math.random() * 1000)
     let newCustomerRef = ref.push({
         fname: fname,
         lname: lname,
@@ -63,19 +65,23 @@ const insertData = (fname, lname, email, contact, complainant, address, city, po
         city: city,
         postal: postal,
         vehicleNumber: vehicleNumber,
-        vehicleBrand: vehicleBrand
+        vehicleBrand: vehicleBrand,
+        type: 'customer',
+        password: '123',
+        uid: customerUid
     })
-    return newCustomerRef.key
+    return customerUid
 
 }
 
-const generateToken = (customerKey, vehicleNumber) => {
+const generateToken = (customerUid, vehicleNumber) => {
     const ref = firebase.database().ref('tokens')
     let newToken = ref.push({
-        customerKey: customerKey,
+        customerUid: customerUid,
         vehicleNumber: vehicleNumber,
         createdAt: window.firebase.database.ServerValue.TIMESTAMP
     })
+
     return newToken.key
 }
 
