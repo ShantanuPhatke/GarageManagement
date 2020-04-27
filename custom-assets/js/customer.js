@@ -9,107 +9,68 @@ const setUsername = () => {
 
   for (let x = 0; x < usernameElements.length; x++) {
     usernameElements[x].innerHTML = name
-
   }
 }
 
 const getData = () => {
 
 
-  //const current_job = JSON.parse(localStorage.getItem("current_job"))
-  //const current_job_id = current_job.job_id
+  const userData = JSON.parse(localStorage.getItem("current_job"))
+  const uid = userData.uid
 
-  const refJobs = firebase.database().ref('tarun/customer').child(uid).child('job-history');
-  refJobs.once(
+  const ref = firebase.database().ref('custoemrs')
+  ref.once(
     "value", snapshot => {
-      if (snapshot.exists()) {
-        //const jobData = snapshot.child(current_job_id).val()
-        // console.log(jobData)
-        //fillJobCard(jobData)
+      snapshot.forEach(childSnapshot => {
+        if (udi == childSnapshot.child("uid").val()) {
+          // Job details
+          const jobTable = document.getElementById("job-table")
+          let html = ''
+          let srNo = 1
+          childSnapshot.forEach(jobitem => {
+            const jobId = jobitem.child("job-id").val()
+            const vehicleNumber = jobitem.child("vehicle-number").val()
+            const vehicleModel = jobitem.child("vehicle-model").val()
+            const deliveryDate = jobitem.child("delivery-date").val()
+            const cost = jobitem.child("cost").val()
+            const status = jobitem.child("status").val()
+            // console.log(currentServiceName);
 
-        // Job details
-        const jobTable = document.getElementById("job-table")
-        let html = ''
-        let srNo = 1
-        snapshot.forEach(jobitem => {
-          const jobId = jobitem.child("job-id").val()
-          const vehicleNumber = jobitem.child("vehicle-number").val()
-          const vehicleModel = jobitem.child("vehicle-model").val()
-          const deliveryDate = jobitem.child("delivery-date").val()
-          const cost = jobitem.child("cost").val()
-          const status = jobitem.child("status").val()
-          // console.log(currentServiceName);
+            html += '<tr>'
+            html += '<td>'
+            html += jobId
+            html += '</td>'
+            html += '<td>'
+            html += vehicleNumber
+            html += '</td>'
+            html += '<td>'
+            html += vehicleModel
+            html += '</td>'
+            html += '<td>'
+            html += deliveryDate
+            html += '</td>'
+            html += '<td>'
+            html += cost
+            html += '</td>'
+            html += '<td>'
+            html += status
+            html += '</td>'
 
-          html += '<tr>'
-          html += '<td>'
-          html += jobId
-          html += '</td>'
-          html += '<td>'
-          html += vehicleNumber
-          html += '</td>'
-          html += '<td>'
-          html += vehicleModel
-          html += '</td>'
-          html += '<td>'
-          html += deliveryDate
-          html += '</td>'
-          html += '<td>'
-          html += cost
-          html += '</td>'
-          html += '<td>'
-          html += status
-          html += '</td>'
-
-          html += '<td class="text-right">'
-          html += '<div class="dropdown">'
-          html += `<a type="button" class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown"
-            aria-haspopup="true" aria-expanded="false">`
-          html += '<i class="ni ni-bold-right">'
-          html += '</i>'
-          html += '</a>'
-          html += '</div>'
-          html += '</td>'
-
-
-          // if (isTechnician()) {
-          //   //Adds the column header
-          //   const actionColumn = document.getElementById("actionColumn")
-          //   actionColumn.innerHTML = 'Action'
-
-          //   //Adds user type in breadcrum
-          //   const userType = document.getElementById("userType")
-          //   userType.innerHTML = 'Technician'
-
-          //   html += '<td>'
-          //   if (currentServiceStatus == "Not started") {
-          //     html += `<a href="javascript: updateServiceStatus('${currentServiceId}', 'Working')" class="btn btn-sm btn-primary">`
-          //     html += 'Start'
-          //     html += '</a>'
-          //   } else if (currentServiceStatus == "Working") {
-          //     html += `<a href="javascript: updateServiceStatus('${currentServiceId}', 'Completed')" class="btn btn-sm btn-success">`
-          //     html += 'Finish'
-          //     html += '</a>'
-          //   } else if (currentServiceStatus == "Completed") {
-          //     html += `<a href="javascript: alert('Service already completed')" class="btn btn-sm btn-info">`
-          //     html += 'Completed'
-          //     html += '</a>'
-          //   }
-          //   html += '</td>'
-          // } else {
-          //   const userType = document.getElementById("userType")
-          //   userType.innerHTML = 'SUPERVISOR'
-          // }
-          html += '</tr>'
-        })
-        jobTable.innerHTML = html
-
-      } else {
-        let errorMessage = "Something is wrong, contact admin";
-        alert(errorMessage);
-      }
-    }
-  )
-
+            html += '<td class="text-right">'
+            html += '<div class="dropdown">'
+            html += `<a type="button" class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">`
+            html += '<i class="ni ni-bold-right">'
+            html += '</i>'
+            html += '</a>'
+            html += '</div>'
+            html += '</td>'
+            html += '</tr>'
+          })
+          jobTable.innerHTML = html
+        }
+      });
+    })
 }
 
 

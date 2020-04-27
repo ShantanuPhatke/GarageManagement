@@ -103,11 +103,26 @@ const confirmJob = JobKey => {
   ref.update({ 'jobCost': jobCost })
 
   // clearCurrentToken()
+  const token = JSON.parse(localStorage.getItem("current_token"))
+  const tokenNo = token.createdAt
+  const refToken = firebase.database().ref("tokens")
+  refToken.once("value", snapshot => {
+    snapshot.forEach(childSnapshot => {
+      if (tokenNo == childSnapshot.child("createdAt").val()) {
+        newRef = firebase.database().ref(`tokens/${childSnapshot.key}`)
+        newRef.remove()
+      }
+    });
+
+  })
 
   //clear data
   newJobKey = "";
   jobCost = "";
-  window.location.href = "./../../inspector.html"
+
+  setTimeout(() => {
+    window.location.href = "./../../inspector.html"
+  }, 1000);
 }
 
 
@@ -123,8 +138,8 @@ const addJob = JobKey => {
   jobCost = parseInt(jobCost) + parseInt(cost)
   document.getElementById("est-job-cost").innerHTML = 'Rs ' + jobCost
 
+  // Add details in Jobs
   const ref = firebase.database().ref("jobs").child(JobKey)
-
   ref.child("services").child('service_00' + service_id).set({
     service_id: 'service_00' + service_id,
     service_name: service_name,
@@ -132,6 +147,7 @@ const addJob = JobKey => {
     status: 'Not started'
   })
 
+  // Add details in Technicians
   const techRef = firebase.database().ref(`technicians/${techId}/jobs`)
   techRef.once("value", snapshot => {
     snapshot.forEach(childSnapshot => {
@@ -141,6 +157,32 @@ const addJob = JobKey => {
           service_name: service_name,
           cost: cost,
           status: 'Not started'
+        })
+      }
+    });
+  })
+
+  // Add details in Customer
+  const tokenData = JSON.parse(localStorage.getItem("current_token"))
+  const customerId = tokenData.customerUid
+
+  const custRef = firebase.database().ref('customers')
+  custRef.once("value", snapshot => {
+    snapshot.forEach(childSnapshot => {
+      if (customerId == childSnapshot.child("uid").val()) {
+        const newCustRef = custRef.child(childSnapshot.key).child("jobs")
+        newCustRef.once("value", gChildSnapshot => {
+          gChildSnapshot.forEach(job => {
+            if (JobKey == job.child("job_id").val()) {
+              newCustRef.child(job.key).child("services").child('service_00' + service_id).set({
+                service_id: 'service_00' + service_id,
+                service_name: service_name,
+                cost: cost,
+                status: 'Not started'
+              })
+            }
+          });
+
         })
       }
     });
@@ -159,8 +201,8 @@ const insertInspection = JobKey => {
   const breaks = formData.get("breaks")
   const tires = formData.get("tires")
 
+  // Add details in Jobs
   const ref = firebase.database().ref("jobs").child(JobKey)
-
   ref.child("vehicle_condition").set({
     headlights: headlights,
     mirrors: mirrors,
@@ -170,21 +212,33 @@ const insertInspection = JobKey => {
     tires: tires
   })
 
-  // const techRef = firebase.database().ref(`technicians/${techId}/jobs`)
-  // techRef.once("value", snapshot => {
-  //   snapshot.forEach(childSnapshot => {
-  //     if (JobKey == childSnapshot.child("job_id").val()) {
-  //       techRef.child(childSnapshot.key).child("vehicle_condition").set({
-  //         headlights: headlights,
-  //         mirrors: mirrors,
-  //         airbags: airbags,
-  //         horn: horn,
-  //         breaks: breaks,
-  //         tires: tires
-  //       })
-  //     }
-  //   });
-  // })
+  // Add details in Customer
+  const tokenData = JSON.parse(localStorage.getItem("current_token"))
+  const customerId = tokenData.customerUid
+
+  const custRef = firebase.database().ref('customers')
+  custRef.once("value", snapshot => {
+    snapshot.forEach(childSnapshot => {
+      if (customerId == childSnapshot.child("uid").val()) {
+        const newCustRef = custRef.child(childSnapshot.key).child("jobs")
+        newCustRef.once("value", gChildSnapshot => {
+          gChildSnapshot.forEach(job => {
+            if (JobKey == job.child("job_id").val()) {
+              newCustRef.child(job.key).child("vehicle_condition").set({
+                headlights: headlights,
+                mirrors: mirrors,
+                airbags: airbags,
+                horn: horn,
+                breaks: breaks,
+                tires: tires
+              })
+            }
+          });
+
+        })
+      }
+    });
+  })
 
 }
 
@@ -198,6 +252,7 @@ const insertDetails = () => {
   const km = formData.get("km")
   const discount = formData.get("discount")
 
+  // Add details in Jobs
   const ref = firebase.database().ref("jobs")
   let newJobRef = ref.push({
     vehicle_number: vehicleNumber,
@@ -208,12 +263,31 @@ const insertDetails = () => {
     status: 'Not started'
   })
 
+  // Add details in Technicians
   const techRef = firebase.database().ref(`technicians/${techId}/jobs`)
   techRef.push({
     status: 'Not started',
     job_id: newJobRef.key,
     vehicle_brand: vehicleModel,
     vehicle_number: vehicleNumber
+  })
+
+  // Add details in Customer
+  const tokenData = JSON.parse(localStorage.getItem("current_token"))
+  const customerId = tokenData.customerUid
+
+  const custRef = firebase.database().ref('customers')
+  custRef.once("value", snapshot => {
+    snapshot.forEach(childSnapshot => {
+      if (customerId == childSnapshot.child("uid").val()) {
+        custRef.child(childSnapshot.key).child("jobs").push({
+          status: 'Not started',
+          job_id: newJobRef.key,
+          vehicle_brand: vehicleModel,
+          vehicle_number: vehicleNumber
+        })
+      }
+    });
   })
 
   return newJobRef.key;
