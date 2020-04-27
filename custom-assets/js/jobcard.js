@@ -19,8 +19,9 @@ const getData = () => {
     refJobs
         .orderByKey()
         .equalTo(current_job_id)
-        .once(
+        .on(
             "value", snapshot => {
+                let html = ''
                 if (snapshot.exists()) {
                     const jobData = snapshot.child(current_job_id).val()
                     // console.log(jobData)
@@ -28,7 +29,6 @@ const getData = () => {
 
                     // Job details
                     const jobTable = document.getElementById("job-table")
-                    let html = ''
                     let srNo = 1
                     snapshot.child(current_job_id).child("services").forEach(service => {
                         const currentServiceId = service.child("service_id").val()
@@ -124,9 +124,18 @@ const finishJob = () => {
 
     //Update status of job in Technician
     const technicianRef = firebase.database().ref(`technicians/${user_id}/jobs`)
-    technicianRef.child(current_job_id).update({ 'status': 'Completed' })
+    technicianRef.once("value", snapshot => {
+        snapshot.forEach(childSnapshot => {
+            if (current_job_id == childSnapshot.child('job_id').val()) {
+                const techRef = firebase.database().ref(`technicians/${user_id}/jobs/${childSnapshot.key}`)
+                techRef.update({ 'status': 'Completed' })
+            }
+        });
+    })
 
-    window.location.href = "./../../technician.html"
+    setTimeout(() => {
+        window.location.href = "./../../technician.html"
+    }, 1000);
 }
 
 

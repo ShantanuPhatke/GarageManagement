@@ -27,7 +27,7 @@ const fetchJobList = uid => {
     ref
         .orderByChild("uid")
         .equalTo(uid)
-        .once("value", (snapshot) => {
+        .on("value", (snapshot) => {
             html = ''
             if (snapshot.exists()) {
                 // console.log(snapshot.child(uid).child("jobs").val());
@@ -80,9 +80,19 @@ const startJob = job_id => {
     const userData = JSON.parse(localStorage.getItem('user'))
     const uid = userData.uid
 
-    // Updates technician object
-    const refTechnicians = firebase.database().ref(`technicians/${uid}/jobs/`)
-    refTechnicians.child(job_id).update({ 'status': 'Started' })
+    //Update status of job in Technician
+    const technicianRef = firebase.database().ref(`technicians/${uid}/jobs`)
+    technicianRef.once("value", snapshot => {
+        snapshot.forEach(childSnapshot => {
+            console.log(childSnapshot.val());
+            if (job_id == childSnapshot.child('job_id').val()) {
+                console.log(childSnapshot.key);
+                const techRef = firebase.database().ref(`technicians/${uid}/jobs/${childSnapshot.key}`)
+
+                techRef.update({ 'status': 'Started' })
+            }
+        });
+    })
 
     // Updates jobs object
     const refJobs = firebase.database().ref('jobs')
