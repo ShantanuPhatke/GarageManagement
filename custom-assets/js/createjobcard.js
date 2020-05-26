@@ -19,12 +19,15 @@ const logout = () => {
 }
 
 const fillDetails = customerUid => {
+  const token = JSON.parse(localStorage.getItem("current_token"))
   const ref = firebase.database().ref("customers")
   ref.orderByChild("uid").once("value", snapshot => {
     snapshot.forEach(childSnapshot => {
       if (customerUid == childSnapshot.child("uid").val()) {
-        document.getElementById("input-vehicle-number").value = childSnapshot.child("vehicleNumber").val()
-        document.getElementById("input-vehicle-brand").value = childSnapshot.child("vehicleBrand").val()
+        //document.getElementById("input-vehicle-number").value = childSnapshot.child("vehicleNumber").val()
+        //document.getElementById("input-vehicle-brand").value = childSnapshot.child("vehicleBrand").val()
+        document.getElementById("input-vehicle-number").value = token.vehicleNumber
+        document.getElementById("input-vehicle-brand").value = token.vehicleBrand
         document.getElementById("input-contact").value = childSnapshot.child("contact").val()
         document.getElementById("input-address").value = childSnapshot.child("address").val()
       }
@@ -101,6 +104,64 @@ const confirmJob = JobKey => {
 
   ref.update({ 'deliveryDate': deliveryDate })
   ref.update({ 'jobCost': jobCost })
+
+  //update in customer try 1
+  //const custRef = firebase.database().ref("customers/jobs").child(JobKey)
+  //custRef.update({ 'deliveryDate': deliveryDate })
+  //custRef.update({ 'jobCost': jobCost })
+
+  //update in customer try 2
+  // const tokenData = JSON.parse(localStorage.getItem("current_token"))
+  // const customerId = tokenData.customerUid
+
+  // const custRef = firebase.database().ref('customers')
+  // custRef.once("value", snapshot => {
+  //   snapshot.forEach(childSnapshot => {
+  //     if (customerId == childSnapshot.child("uid").val()) {
+  //       const newCustRef = custRef.child(childSnapshot.key).child("jobs")
+  //       newCustRef.once("value", gChildSnapshot => {
+  //         gChildSnapshot.forEach(job => {
+  //           if (JobKey == job.child("job_id").val()) {
+  //             newCustRef.child(job.key).update({ 'deliveryDate': deliveryDate })
+  //             newCustRef.child(job.key).update({ 'jobCost': jobCost })
+  //           }
+  //         });
+
+  //       })
+  //     }
+  //   });
+  // })
+
+  //update in customer try 3
+  const tokenData = JSON.parse(localStorage.getItem("current_token"))
+  const customerId = tokenData.customerUid
+
+  const custRef = firebase.database().ref('customers').child(customerId).child('jobs').child(JobKey)
+  custRef.update({ 'deliveryDate': deliveryDate })
+  custRef.update({ 'jobCost': jobCost })
+
+  // const custRef = firebase.database().ref('customers')
+  // custRef.once("value", snapshot => {
+  //   snapshot.forEach(childSnapshot => {
+  //     if (customerId == childSnapshot.child("uid").val()) {
+  //       const newCustRef = custRef.child(childSnapshot.key).child("jobs")
+  //       newCustRef.once("value", gChildSnapshot => {
+  //         gChildSnapshot.forEach(job => {
+  //           if (JobKey == job.child("job_id").val()) {
+  //             newCustRef.child(job.key).update({ 'deliveryDate': deliveryDate })
+  //             newCustRef.child(job.key).update({ 'jobCost': jobCost })
+  //           }
+  //         });
+
+  //       })
+  //     }
+  //   });
+  // })
+
+
+
+
+
 
   // clearCurrentToken()
   const token = JSON.parse(localStorage.getItem("current_token"))
@@ -244,6 +305,9 @@ const insertInspection = JobKey => {
 
 const insertDetails = () => {
 
+  const tokenData = JSON.parse(localStorage.getItem("current_token"))
+  const customerId = tokenData.customerUid
+
   const form = document.getElementById("ins-jobcard-form")
   let formData = new FormData(form)
   const vehicleNumber = formData.get("vehicle-number")
@@ -260,6 +324,7 @@ const insertDetails = () => {
     fuel: fuel,
     km: km,
     discount: discount,
+    cid: customerId,
     status: 'Not started'
   })
 
@@ -273,14 +338,12 @@ const insertDetails = () => {
   })
 
   // Add details in Customer
-  const tokenData = JSON.parse(localStorage.getItem("current_token"))
-  const customerId = tokenData.customerUid
 
   const custRef = firebase.database().ref('customers')
   custRef.once("value", snapshot => {
     snapshot.forEach(childSnapshot => {
       if (customerId == childSnapshot.child("uid").val()) {
-        custRef.child(childSnapshot.key).child("jobs").push({
+        custRef.child(childSnapshot.key).child("jobs").child(newJobRef.key).set({
           status: 'Not started',
           job_id: newJobRef.key,
           vehicle_brand: vehicleModel,

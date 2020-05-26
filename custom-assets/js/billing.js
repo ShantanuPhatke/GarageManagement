@@ -30,7 +30,8 @@ const fetchBillingList = () => {
                 snapshot.forEach(bill => {
                     const paymentStatus = bill.child("payment_status").val()
                     const job_id = bill.child("job_id").val()
-                    const bill_id = bill.child("bill_id").val()
+                    //const bill_id = bill.child("bill_id").val()
+                    const bill_id = bill.key
                     const vehicle_number = bill.child("vehicle_number").val()
                     html += '<tr>'
                     html += '<td>'

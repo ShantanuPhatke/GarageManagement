@@ -33,8 +33,8 @@ const getData = () => {
               const jobId = jobitem.child("job_id").val()
               const vehicleNumber = jobitem.child("vehicle_number").val()
               const vehicleBrand = jobitem.child("vehicle_brand").val()
-              const deliveryDate = jobitem.child("delivery_date").val()
-              const cost = jobitem.child("cost").val()
+              const deliveryDate = jobitem.child("deliveryDate").val()
+              const cost = jobitem.child("jobCost").val()
               const status = jobitem.child("status").val()
               html += '<tr>'
               html += '<td>'
@@ -47,10 +47,10 @@ const getData = () => {
               html += vehicleBrand
               html += '</td>'
               html += '<td>'
-              html += "NA"
+              html += deliveryDate
               html += '</td>'
               html += '<td>'
-              html += "Yet to be estimated"
+              html += cost
               html += '</td>'
               html += '<td>'
               html += status

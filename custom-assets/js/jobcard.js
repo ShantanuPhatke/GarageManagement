@@ -117,10 +117,37 @@ const finishJob = () => {
     const current_user = JSON.parse(localStorage.getItem("user"))
     const current_job_id = current_job.job_id
     const user_id = current_user.uid
+    //alert(current_job_id)
+
+
+    //update in customer
+    const custoRef = firebase.database().ref('jobs').child(current_job_id)
+    //alert(custoRef)
+
+    const cid = custoRef.once("value", snapshot => {
+        //alert(snapshot.child('cid').val())
+        const cid = snapshot.child('cid').val()
+
+        const custRef = firebase.database().ref('customers').child(cid).child('jobs').child(current_job_id)
+        custRef.update({ 'status': 'Completed' })
+    })
+
 
     //Update status of job in Job
     const jobRef = firebase.database().ref('jobs')
     jobRef.child(current_job_id).update({ 'status': 'Completed' })
+
+    //Update data in billing
+    const billRef = firebase.database().ref('billing')
+    //const vehicleNum = jobRef.child(current_job_id).child(vehicle_number).val()
+    const vehicleNum = document.getElementById("input-vehicle-number");
+    //alert(vehicleNum.value)
+    let newBill = billRef.push({
+        job_id: current_job_id,
+        payment_status: 'Unpaid',
+        vehicle_number: vehicleNum.value
+    })
+    //alert(newBill.key)
 
     //Update status of job in Technician
     const technicianRef = firebase.database().ref(`technicians/${user_id}/jobs`)

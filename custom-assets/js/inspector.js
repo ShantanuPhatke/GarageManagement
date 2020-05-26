@@ -15,10 +15,13 @@ const logout = () => {
     window.location.href = "./../../index.html"
 }
 
-const attendToken = (createdAt, customerUid) => {
+const attendToken = (createdAt, customerUid, complainant, vehicleBrand, vehicleNumber) => {
     const currentToken = {
         createdAt: createdAt,
-        customerUid: customerUid
+        customerUid: customerUid,
+        complainant: complainant,
+        vehicleBrand: vehicleBrand,
+        vehicleNumber: vehicleNumber
     }
     localStorage.setItem("current_token", JSON.stringify(currentToken))
 
@@ -40,7 +43,7 @@ const renderTokenQueue = tokenQueue => {
         html += token.customerUid
         html += '</td>'
         html += '<td>'
-        html += `<a href="javascript: attendToken('${token.createdAt}', '${token.customerUid}')" class="btn btn-sm btn-info">`
+        html += `<a href="javascript: attendToken('${token.createdAt}', '${token.customerUid}', '${token.complainant}', '${token.vehicleBrand}', '${token.vehicleNumber}')" class="btn btn-sm btn-info">`
         html += 'Attend'
         html += '</a>'
         html += '</td>'

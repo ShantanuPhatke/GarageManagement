@@ -34,7 +34,7 @@ const handleSubmit = () => {
                 const vehicleBrand = formData.get('vehicle-brand')
 
                 let customerUid = insertData(fname, lname, email, contact, complainant, address, city, postal, vehicleNumber, vehicleBrand);
-                let tokenNumber = generateToken(customerUid, vehicleNumber)
+                let tokenNumber = generateToken(customerUid, complainant, vehicleNumber, vehicleBrand)
                 alert("Your token number is: " + tokenNumber)
                 resetForm()
 
@@ -43,7 +43,7 @@ const handleSubmit = () => {
                 firebase.database().ref('customers').child(customerKey).child("complainant").set(
                     formData.get('complainant') == "on" ? "Yes" : "No"
                 )
-                let tokenNumber = generateToken(customerKey, vehicleNumber)
+                let tokenNumber = generateToken(customerKey, complainant, vehicleNumber, vehicleBrand)
                 alert("Your token number is: " + tokenNumber)
                 resetForm()
 
@@ -55,17 +55,17 @@ const insertData = (fname, lname, email, contact, complainant, address, city, po
 
     const ref = firebase.database().ref('customers')
     const customerUid = 'c' + Math.floor(Math.random() * 1000)
-    let newCustomerRef = ref.push({
+    let newCustomerRef = ref.child(customerUid).set({
         fname: fname,
         lname: lname,
         email: email,
         contact: contact,
-        complainant: complainant,
+        //complainant: complainant,
         address: address,
         city: city,
         postal: postal,
-        vehicleNumber: vehicleNumber,
-        vehicleBrand: vehicleBrand,
+        //vehicleNumber: vehicleNumber,
+        //vehicleBrand: vehicleBrand,
         type: 'customer',
         password: '123',
         uid: customerUid
@@ -74,11 +74,13 @@ const insertData = (fname, lname, email, contact, complainant, address, city, po
 
 }
 
-const generateToken = (customerUid, vehicleNumber) => {
+const generateToken = (customerUid, complainant, vehicleNumber, vehicleBrand) => {
     const ref = firebase.database().ref('tokens')
     let newToken = ref.push({
         customerUid: customerUid,
         vehicleNumber: vehicleNumber,
+        vehicleBrand: vehicleBrand,
+        complainant: complainant,
         createdAt: window.firebase.database.ServerValue.TIMESTAMP
     })
 

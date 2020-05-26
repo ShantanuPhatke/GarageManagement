@@ -80,6 +80,19 @@ const startJob = job_id => {
     const userData = JSON.parse(localStorage.getItem('user'))
     const uid = userData.uid
 
+    //update in customer
+    const custoRef = firebase.database().ref('jobs').child(job_id)
+    //alert(custoRef)
+
+    const cid = custoRef.once("value", snapshot => {
+        //alert(snapshot.child('cid').val())
+        const cid = snapshot.child('cid').val()
+
+        const custRef = firebase.database().ref('customers').child(cid).child('jobs').child(job_id)
+        custRef.update({ 'status': 'started' })
+    })
+    //alert('cid')
+
     //Update status of job in Technician
     const technicianRef = firebase.database().ref(`technicians/${uid}/jobs`)
     technicianRef.once("value", snapshot => {

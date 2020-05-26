@@ -37,7 +37,7 @@ const getBillDetails = () => {
     fillBillInfo(bill_id, vehicle_number, payment_status)
 
 
-    const refJobs = firebase.database().ref(`jobs/${job_id}/job_details/services`)
+    const refJobs = firebase.database().ref(`jobs/${job_id}/services`)
     refJobs
         .once(
             "value", snapshot => {
@@ -46,7 +46,7 @@ const getBillDetails = () => {
                     html = ''
                     snapshot.forEach(service => {
                         const service_name = service.child("service_name").val()
-                        const service_cost = service.child("service_cost").val()
+                        const service_cost = service.child("cost").val()
                         html += '<tr>'
                         html += '<td class="text-center">'
                         html += srNo
