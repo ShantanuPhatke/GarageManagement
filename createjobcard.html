@@ -1,388 +1,643 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta
+      name="description"
+      content="Start your development with a Dashboard for Bootstrap 4."
+    />
+    <meta name="author" content="Creative Tim" />
+    <title>Job Card | GM ERP</title>
+    <!-- Favicon -->
+    <link rel="icon" href="./assets/img/brand/favicon.png" type="image/png" />
+    <!-- Fonts -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700"
+    />
+    <!-- Icons -->
+    <link
+      rel="stylesheet"
+      href="./assets/vendor/nucleo/css/nucleo.css"
+      type="text/css"
+    />
+    <link
+      rel="stylesheet"
+      href="./assets/vendor/@fortawesome/fontawesome-free/css/all.min.css"
+      type="text/css"
+    />
+    <!-- Page plugins -->
+    <!-- Argon CSS -->
+    <link
+      rel="stylesheet"
+      href="./assets/css/argon.css?v=1.2.0"
+      type="text/css"
+    />
+  </head>
 
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-  <meta name="description" content="Start your development with a Dashboard for Bootstrap 4." />
-  <meta name="author" content="Creative Tim" />
-  <title>Job Card | GM ERP</title>
-  <!-- Favicon -->
-  <link rel="icon" href="./assets/img/brand/favicon.png" type="image/png" />
-  <!-- Fonts -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" />
-  <!-- Icons -->
-  <link rel="stylesheet" href="./assets/vendor/nucleo/css/nucleo.css" type="text/css" />
-  <link rel="stylesheet" href="./assets/vendor/@fortawesome/fontawesome-free/css/all.min.css" type="text/css" />
-  <!-- Page plugins -->
-  <!-- Argon CSS -->
-  <link rel="stylesheet" href="./assets/css/argon.css?v=1.2.0" type="text/css" />
-</head>
+  <body onload="getDetails(); setUsername()">
+    <!-- Checking if user has already logged in -->
+    <script>
+      if (localStorage.getItem("user") === null) {
+        window.location = "./../../index.html"
+      }
+    </script>
 
-<body onload="getDetails(); setUsername()">
-  <!-- Checking if user has already logged in -->
-  <script>
-    if (localStorage.getItem("user") === null) {
-      window.location = "./../../index.html";
-    }
-  </script>
-
-  <!-- Main content -->
-  <div class="main-content" id="panel">
-    <!-- Topnav -->
-    <nav class="navbar navbar-top navbar-expand navbar-dark bg-primary border-bottom">
-      <div class="container-fluid">
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <!-- Navbar links -->
-          <ul class="navbar-nav align-items-center ml-md-auto">
-          </ul>
-          <ul class="navbar-nav align-items-center ml-auto ml-md-0">
-            <li class="nav-item dropdown">
-              <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
-                aria-expanded="false">
-                <div class="media align-items-center">
-                  <span class="avatar avatar-sm rounded-circle">
-                    <img alt="Image placeholder" src="./assets/img/theme/team-4.jpg" />
-                  </span>
-                  <div class="media-body ml-2 d-none d-lg-block">
-                    <span class="mb-0 text-sm font-weight-bold username">John Snow</span>
+    <!-- Main content -->
+    <div class="main-content" id="panel">
+      <!-- Topnav -->
+      <nav
+        class="
+          navbar navbar-top navbar-expand navbar-dark
+          bg-primary
+          border-bottom
+        "
+      >
+        <div class="container-fluid">
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <!-- Navbar links -->
+            <ul class="navbar-nav align-items-center ml-md-auto"></ul>
+            <ul class="navbar-nav align-items-center ml-auto ml-md-0">
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link pr-0"
+                  href="#"
+                  role="button"
+                  data-toggle="dropdown"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                >
+                  <div class="media align-items-center">
+                    <span class="avatar avatar-sm rounded-circle">
+                      <img
+                        alt="Image placeholder"
+                        src="./assets/img/theme/team-4.jpg"
+                      />
+                    </span>
+                    <div class="media-body ml-2 d-none d-lg-block">
+                      <span class="mb-0 text-sm font-weight-bold username"
+                        >John Snow</span
+                      >
+                    </div>
                   </div>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right">
+                  <div class="dropdown-header noti-title">
+                    <h6 class="text-overflow m-0">Welcome!</h6>
+                  </div>
+                  <a href="#!" class="dropdown-item">
+                    <i class="ni ni-single-02"></i>
+                    <span>My profile</span>
+                  </a>
+                  <a href="#!" class="dropdown-item">
+                    <i class="ni ni-single-02"></i>
+                    <span>Job</span>
+                  </a>
+                  <a href="javascript: logout()" class="dropdown-item">
+                    <i class="ni ni-user-run"></i>
+                    <span>Logout</span>
+                  </a>
                 </div>
-              </a>
-              <div class="dropdown-menu dropdown-menu-right">
-                <div class="dropdown-header noti-title">
-                  <h6 class="text-overflow m-0">Welcome!</h6>
-                </div>
-                <a href="#!" class="dropdown-item">
-                  <i class="ni ni-single-02"></i>
-                  <span>My profile</span>
-                </a>
-                <a href="#!" class="dropdown-item">
-                  <i class="ni ni-single-02"></i>
-                  <span>Job</span>
-                </a>
-                <a href="javascript: logout()" class="dropdown-item">
-                  <i class="ni ni-user-run"></i>
-                  <span>Logout</span>
-                </a>
-              </div>
-            </li>
-          </ul>
+              </li>
+            </ul>
+          </div>
         </div>
-      </div>
-    </nav>
+      </nav>
 
-    <!-- Header -->
-    <div class="header bg-primary pb-6">
-      <div class="container-fluid">
-        <div class="header-body">
-          <div class="row align-items-center py-4">
-            <div class="col-lg-6 col-7">
-              <h6 class="h2 text-white d-inline-block mb-0">Vehicle Inspector</h6>
-              <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
-                <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
-                  <li class="breadcrumb-item">
-                    <a href="#"><i class="fas fa-home"></i></a>
-                  </li>
-                  <li class="breadcrumb-item active" aria-current="page">
-                    Create JobCard
-                  </li>
-                </ol>
-              </nav>
+      <!-- Header -->
+      <div class="header bg-primary pb-6">
+        <div class="container-fluid">
+          <div class="header-body">
+            <div class="row align-items-center py-4">
+              <div class="col-lg-6 col-7">
+                <h6 class="h2 text-white d-inline-block mb-0">
+                  Vehicle Inspector
+                </h6>
+                <nav
+                  aria-label="breadcrumb"
+                  class="d-none d-md-inline-block ml-md-4"
+                >
+                  <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
+                    <li class="breadcrumb-item">
+                      <a href="#"><i class="fas fa-home"></i></a>
+                    </li>
+                    <li class="breadcrumb-item active" aria-current="page">
+                      Create JobCard
+                    </li>
+                  </ol>
+                </nav>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
 
-    <!-- Page content -->
-    <div class="container-fluid mt--6">
-      <div class="row">
-        <div class="col-xl">
-          <!-- Job Card -->
-          <div class="card">
-            <div class="card-header">
-              <div class="row align-items-center">
-                <div class="col-8">
-                  <h3 class="mb-0">Token number: <span id="tokenNo"></span></h3>
+      <!-- Page content -->
+      <div class="container-fluid mt--6">
+        <div class="row">
+          <div class="col-xl">
+            <!-- Job Card -->
+            <div class="card">
+              <div class="card-header">
+                <div class="row align-items-center">
+                  <div class="col-8">
+                    <h3 class="mb-0">
+                      Token number: <span id="tokenNo"></span>
+                    </h3>
+                  </div>
+                  <div class="col-4 text-right"></div>
                 </div>
-                <div class="col-4 text-right"></div>
               </div>
-            </div>
-            <div class="card-body">
-              <form id="ins-jobcard-form">
-                <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-                  <li class="nav-item">
-                    <a class="nav-link active" id="pill-vehicle-information-tab" data-toggle="pill"
-                      href="#pill-vehicle-information" role="tab" aria-controls="pill-vehicle-information"
-                      aria-selected="true">Details</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" id="pill-vehicle-inspection-tab" data-toggle="pill"
-                      href="#pill-vehicle-inspection" role="tab" aria-controls="pill-vehicle-inspection"
-                      aria-selected="false">Vehicle Inspection</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" id="pill-job-tab" data-toggle="pill" href="#pill-job" role="tab"
-                      aria-controls="pill-job" aria-selected="false">Jobs</a>
-                  </li>
-                </ul>
-                <div class="tab-content pt-2 pl-1" id="pills-tabContent">
-                  <div class="tab-pane fade show active" id="pill-vehicle-information" role="tabpanel"
-                    aria-labelledby="pill-vehicle-information-tab">
-                    <!-- Vehicle -->
+              <div class="card-body">
+                <form id="ins-jobcard-form">
+                  <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                    <li class="nav-item">
+                      <a
+                        class="nav-link active"
+                        id="pill-vehicle-information-tab"
+                        data-toggle="pill"
+                        href="#pill-vehicle-information"
+                        role="tab"
+                        aria-controls="pill-vehicle-information"
+                        aria-selected="true"
+                        >Details</a
+                      >
+                    </li>
+                    <li class="nav-item">
+                      <a
+                        class="nav-link"
+                        id="pill-vehicle-inspection-tab"
+                        data-toggle="pill"
+                        href="#pill-vehicle-inspection"
+                        role="tab"
+                        aria-controls="pill-vehicle-inspection"
+                        aria-selected="false"
+                        >Vehicle Inspection</a
+                      >
+                    </li>
+                    <li class="nav-item">
+                      <a
+                        class="nav-link"
+                        id="pill-job-tab"
+                        data-toggle="pill"
+                        href="#pill-job"
+                        role="tab"
+                        aria-controls="pill-job"
+                        aria-selected="false"
+                        >Jobs</a
+                      >
+                    </li>
+                  </ul>
+                  <div class="tab-content pt-2 pl-1" id="pills-tabContent">
+                    <div
+                      class="tab-pane fade show active"
+                      id="pill-vehicle-information"
+                      role="tabpanel"
+                      aria-labelledby="pill-vehicle-information-tab"
+                    >
+                      <!-- Vehicle -->
 
-                    <div class="pl-lg-4">
-                      <div class="row">
-                        <div class="col-lg-4">
-                          <div class="form-group">
-                            <label class="form-control-label" for="input-vehicle-number">
-                              Vehicle Registration number
-                            </label>
-                            <input type="text" id="input-vehicle-number" class="form-control"
-                              placeholder="XX-XX-XX-XXXX" name="vehicle-number" />
+                      <div class="pl-lg-4">
+                        <div class="row">
+                          <div class="col-lg-4">
+                            <div class="form-group">
+                              <label
+                                class="form-control-label"
+                                for="input-vehicle-number"
+                              >
+                                Vehicle Registration number
+                              </label>
+                              <input
+                                type="text"
+                                id="input-vehicle-number"
+                                class="form-control"
+                                placeholder="XX-XX-XX-XXXX"
+                                name="vehicle-number"
+                              />
+                            </div>
                           </div>
-                        </div>
-                        <div class="col-lg-4">
-                          <div class="form-group">
-                            <label class="form-control-label" for="input-vehicle-brand">
-                              Vehicle Model
-                            </label>
-                            <input type="text" name="vehicle-model" id="input-vehicle-brand" class="form-control"
-                              placeholder="Model" />
+                          <div class="col-lg-4">
+                            <div class="form-group">
+                              <label
+                                class="form-control-label"
+                                for="input-vehicle-brand"
+                              >
+                                Vehicle Model
+                              </label>
+                              <input
+                                type="text"
+                                name="vehicle-model"
+                                id="input-vehicle-brand"
+                                class="form-control"
+                                placeholder="Model"
+                              />
+                            </div>
                           </div>
-                        </div>
-                        <div class="col-lg-4">
-                          <div class="form-group">
-                            <label class="form-control-label" for="input-vehicle-brand">
-                              Customer Contact
-                            </label>
-                            <input type="text" name="customer-mobile" id="input-contact" class="form-control"
-                              placeholder="+91 " />
+                          <div class="col-lg-4">
+                            <div class="form-group">
+                              <label
+                                class="form-control-label"
+                                for="input-vehicle-brand"
+                              >
+                                Customer Contact
+                              </label>
+                              <input
+                                type="text"
+                                name="customer-mobile"
+                                id="input-contact"
+                                class="form-control"
+                                placeholder="+91 "
+                              />
+                            </div>
                           </div>
-                        </div>
-                        <div class="col-lg-4">
-                          <div class="form-group">
-                            <label class="form-control-label" for="input-vehicle-brand">
-                              Customer Address
-                            </label>
-                            <input type="text" name="customer-address" id="input-address" class="form-control"
-                              placeholder="address" />
+                          <div class="col-lg-4">
+                            <div class="form-group">
+                              <label
+                                class="form-control-label"
+                                for="input-vehicle-brand"
+                              >
+                                Customer Address
+                              </label>
+                              <input
+                                type="text"
+                                name="customer-address"
+                                id="input-address"
+                                class="form-control"
+                                placeholder="address"
+                              />
+                            </div>
                           </div>
-                        </div>
-                        <div class="col-lg-4">
-                          <div class="form-group">
-                            <label class="form-control-label" for="input-fuel">
-                              Fuel Reading
-                            </label>
-                            <input type="text" name="fuel" id="input-fuel" class="form-control"
-                              placeholder="Fuel reading in Liters" />
+                          <div class="col-lg-4">
+                            <div class="form-group">
+                              <label
+                                class="form-control-label"
+                                for="input-fuel"
+                              >
+                                Fuel Reading
+                              </label>
+                              <input
+                                type="text"
+                                name="fuel"
+                                id="input-fuel"
+                                class="form-control"
+                                placeholder="Fuel reading in Liters"
+                              />
+                            </div>
                           </div>
-                        </div>
-                        <div class="col-lg-4">
-                          <div class="form-group">
-                            <label class="form-control-label" for="input-km">
-                              KM Reading
-                            </label>
-                            <input type="text" name="km" id="input-km" class="form-control" placeholder="KM Reading" />
+                          <div class="col-lg-4">
+                            <div class="form-group">
+                              <label class="form-control-label" for="input-km">
+                                KM Reading
+                              </label>
+                              <input
+                                type="text"
+                                name="km"
+                                id="input-km"
+                                class="form-control"
+                                placeholder="KM Reading"
+                              />
+                            </div>
                           </div>
-                        </div>
-                        <div class="col-lg-4">
-                          <div class="form-group">
-                            <label class="form-control-label" for="input-vehicle-brand">
-                              Discount Voucher
-                            </label>
-                            <input type="text" name="discount" id="input-vehicle-brand" class="form-control"
-                              placeholder="Enter Voucher" />
+                          <div class="col-lg-4">
+                            <div class="form-group">
+                              <label
+                                class="form-control-label"
+                                for="input-vehicle-brand"
+                              >
+                                Discount Voucher
+                              </label>
+                              <input
+                                type="text"
+                                name="discount"
+                                id="input-vehicle-brand"
+                                class="form-control"
+                                placeholder="Enter Voucher"
+                              />
+                            </div>
                           </div>
                         </div>
                       </div>
+                      <hr class="my-4" />
+                      <div class="text-center">
+                        <button
+                          class="btn btn-primary mt-1 mb-2"
+                          type="button"
+                          onclick="handleSubmit('details')"
+                        >
+                          Save
+                        </button>
+                      </div>
                     </div>
-                    <hr class="my-4" />
-                    <div class="text-center">
-                      <button class="btn btn-primary mt-1 mb-2" type="button" onclick="handleSubmit('details')">
-                        Save
-                      </button>
-                    </div>
-                  </div>
-                  <div class="tab-pane fade" id="pill-vehicle-inspection" role="tabpanel"
-                    aria-labelledby="pill-vehicle-inspection-tab">
-                    <!-- Vehicle Inpection -->
+                    <div
+                      class="tab-pane fade"
+                      id="pill-vehicle-inspection"
+                      role="tabpanel"
+                      aria-labelledby="pill-vehicle-inspection-tab"
+                    >
+                      <!-- Vehicle Inpection -->
 
-                    <div class="pl-lg-4">
-                      <div class="row">
-                        <div class="col-lg-4">
-                          <div class="form-group">
-                            <label class="form-control-label" for="input-vehicle-brand">
-                              Headlights
-                            </label>
-                            <input type="text" name="ins-headlights" id="input-vehicle-brand" class="form-control"
-                              placeholder="Comments" />
+                      <div class="pl-lg-4">
+                        <div class="row">
+                          <div class="col-lg-4">
+                            <div class="form-group">
+                              <label
+                                class="form-control-label"
+                                for="input-vehicle-brand"
+                              >
+                                Headlights
+                              </label>
+                              <input
+                                type="text"
+                                name="ins-headlights"
+                                id="input-vehicle-brand"
+                                class="form-control"
+                                placeholder="Comments"
+                              />
+                            </div>
                           </div>
-                        </div>
-                        <div class="col-lg-4">
-                          <div class="form-group">
-                            <label class="form-control-label" for="input-vehicle-brand">
-                              Mirrors
-                            </label>
-                            <input type="text" name="ins-mirrors" id="input-vehicle-brand" class="form-control"
-                              placeholder="Comments" />
+                          <div class="col-lg-4">
+                            <div class="form-group">
+                              <label
+                                class="form-control-label"
+                                for="input-vehicle-brand"
+                              >
+                                Mirrors
+                              </label>
+                              <input
+                                type="text"
+                                name="ins-mirrors"
+                                id="input-vehicle-brand"
+                                class="form-control"
+                                placeholder="Comments"
+                              />
+                            </div>
                           </div>
-                        </div>
-                        <div class="col-lg-4">
-                          <div class="form-group">
-                            <label class="form-control-label" for="airbags">
-                              Airbags
-                            </label>
-                            <input type="text" name="airbags" id="input-airbags" class="form-control"
-                              placeholder="Comments" />
+                          <div class="col-lg-4">
+                            <div class="form-group">
+                              <label class="form-control-label" for="airbags">
+                                Airbags
+                              </label>
+                              <input
+                                type="text"
+                                name="airbags"
+                                id="input-airbags"
+                                class="form-control"
+                                placeholder="Comments"
+                              />
+                            </div>
                           </div>
-                        </div>
-                        <div class="col-lg-4">
-                          <div class="form-group">
-                            <label class="form-control-label" for="input-breaks">
-                              Breaks
-                            </label>
-                            <input type="text" name="breaks" id="input-breaks" class="form-control"
-                              placeholder="Comments" />
+                          <div class="col-lg-4">
+                            <div class="form-group">
+                              <label
+                                class="form-control-label"
+                                for="input-breaks"
+                              >
+                                Breaks
+                              </label>
+                              <input
+                                type="text"
+                                name="breaks"
+                                id="input-breaks"
+                                class="form-control"
+                                placeholder="Comments"
+                              />
+                            </div>
                           </div>
-                        </div>
-                        <div class="col-lg-4">
-                          <div class="form-group">
-                            <label class="form-control-label" for="horn">
-                              Horn
-                            </label>
-                            <input type="text" id="input-horn" name="horn" class="form-control"
-                              placeholder="Comments" />
+                          <div class="col-lg-4">
+                            <div class="form-group">
+                              <label class="form-control-label" for="horn">
+                                Horn
+                              </label>
+                              <input
+                                type="text"
+                                id="input-horn"
+                                name="horn"
+                                class="form-control"
+                                placeholder="Comments"
+                              />
+                            </div>
                           </div>
-                        </div>
-                        <div class="col-lg-4">
-                          <div class="form-group">
-                            <label class="form-control-label" for="tires">
-                              Tires
-                            </label>
-                            <input type="text" name="tires" id="input-tires" class="form-control"
-                              placeholder="Comments" />
+                          <div class="col-lg-4">
+                            <div class="form-group">
+                              <label class="form-control-label" for="tires">
+                                Tires
+                              </label>
+                              <input
+                                type="text"
+                                name="tires"
+                                id="input-tires"
+                                class="form-control"
+                                placeholder="Comments"
+                              />
+                            </div>
                           </div>
                         </div>
                       </div>
+                      <hr class="my-4" />
+                      <div class="text-center">
+                        <button
+                          class="btn btn-primary mt-1 mb-2"
+                          type="button"
+                          onclick="handleSubmit('inspection')"
+                        >
+                          Save
+                        </button>
+                      </div>
                     </div>
-                    <hr class="my-4" />
-                    <div class="text-center">
-                      <button class="btn btn-primary mt-1 mb-2" type="button" onclick="handleSubmit('inspection')">
-                        Save
-                      </button>
-                    </div>
-                  </div>
-                  <div class="tab-pane fade" id="pill-job" role="tabpanel" aria-labelledby="pill-job-tab">
-                    <!-- Page content -->
-                    <div class="container-fluid mt--3">
-                      <div class="row">
-                        <div class="col-xl mb-0">
-                          <div class="card mt-3">
-                            <div class="card-header border-0">
-                              <div class="row align-items-center">
-                                <div class="col">
-                                  <h3 class="mb-0">Add Jobs</h3>
+                    <div
+                      class="tab-pane fade"
+                      id="pill-job"
+                      role="tabpanel"
+                      aria-labelledby="pill-job-tab"
+                    >
+                      <!-- Page content -->
+                      <div class="container-fluid mt--3">
+                        <div class="row">
+                          <div class="col-xl mb-0">
+                            <div class="card mt-3">
+                              <div class="card-header border-0">
+                                <div class="row align-items-center">
+                                  <div class="col">
+                                    <h3 class="mb-0">Add Jobs</h3>
+                                  </div>
                                 </div>
                               </div>
-                            </div>
-                            <div class="table-responsive">
-                              <!-- Projects table -->
-                              <table class="table align-items-center table-flush">
-                                <thead class="thead-light">
-                                  <tr>
-                                    <th scope="col">Serial Number</th>
-                                    <th scope="col">Service Name</th>
-                                    <th scope="col">Cost</th>
-                                    <th scope="col"></th>
-                                  </tr>
-                                </thead>
-                                <tbody>
-                                  <tr scope="row">
-                                    <td>
-                                      <div class="col-s-3">
-                                        <div class="form-group">
-                                          <input type="text" name="service_id" class="form-control" placeholder="" />
+                              <div class="table-responsive">
+                                <!-- Projects table -->
+                                <table
+                                  class="table align-items-center table-flush"
+                                >
+                                  <thead class="thead-light">
+                                    <tr>
+                                      <th scope="col">Serial Number</th>
+                                      <th scope="col">Service Name</th>
+                                      <th scope="col">Cost</th>
+                                      <th scope="col"></th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    <tr scope="row">
+                                      <td>
+                                        <div class="col-s-3">
+                                          <div class="form-group">
+                                            <input
+                                              type="text"
+                                              name="service_id"
+                                              class="form-control"
+                                              placeholder=""
+                                            />
+                                          </div>
                                         </div>
-                                      </div>
-                                    </td>
-                                    <td>
-                                      <div class="col-s-3">
-                                        <div class="form-group">
-                                          <input type="text" name="service_name" class="form-control" placeholder="" />
+                                      </td>
+                                      <td>
+                                        <div class="col-s-3">
+                                          <div class="form-group">
+                                            <input
+                                              type="text"
+                                              name="service_name"
+                                              class="form-control"
+                                              placeholder=""
+                                            />
+                                          </div>
                                         </div>
-                                      </div>
-                                    </td>
-                                    <td>
-                                      <div class="col-s-3">
-                                        <div class="form-group">
-                                          <input type="text" name="cost" class="form-control" placeholder="" />
+                                      </td>
+                                      <td>
+                                        <div class="col-s-3">
+                                          <div class="form-group">
+                                            <input
+                                              type="text"
+                                              name="cost"
+                                              class="form-control"
+                                              placeholder=""
+                                            />
+                                          </div>
                                         </div>
-                                      </div>
-                                    </td>
-                                    <td style="vertical-align: top;">
-                                      <div class="col-s-3 text-center">
-                                        <button class="btn btn-primary" type="button" onclick="handleSubmit('add')">
-                                          Add Work
-                                        </button>
-                                      </div>
-                                    </td>
-                                  </tr>
-                                </tbody>
-                              </table>
-                              <div class="text-center">
-                                <button class="btn btn-primary mt-1 mb-5" type="button" data-toggle="modal"
-                                  data-target="#exampleModal">
-                                  Confirm Job
-                                </button>
-                                <!-- Button trigger modal -->
-                                <!-- <button type="button" class="btn btn-primary" data-toggle="modal"
+                                      </td>
+                                      <td style="vertical-align: top">
+                                        <div class="col-s-3 text-center">
+                                          <button
+                                            class="btn btn-primary"
+                                            type="button"
+                                            onclick="handleSubmit('add')"
+                                          >
+                                            Add Work
+                                          </button>
+                                        </div>
+                                      </td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                                <div class="text-center">
+                                  <button
+                                    class="btn btn-primary mt-1 mb-5"
+                                    type="button"
+                                    data-toggle="modal"
+                                    data-target="#exampleModal"
+                                  >
+                                    Confirm Job
+                                  </button>
+                                  <!-- Button trigger modal -->
+                                  <!-- <button type="button" class="btn btn-primary" data-toggle="modal"
                                   data-target="#exampleModal">
                                   Launch demo modal
                                 </button> -->
 
-                                <!-- Modal -->
-                                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
-                                  aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                  <div class="modal-dialog" role="document">
-                                    <div class="modal-content">
-                                      <div class="modal-header">
-
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                          <span aria-hidden="true">&times;</span>
-                                        </button>
-                                      </div>
-                                      <div class="modal-body">
-                                        <div class="container-fluid">
-                                          <div class="row">
-                                            <div class="col-xl">
-                                              <div class="card bg-white">
-                                                <div class="card-header bg-transparent">
-                                                  <div class="row align-items-center">
-                                                    <div class="col">
-                                                      <h5 class="h2 text-default mb-0">
-                                                        Job ID :
-                                                        <span class="font-weight-normal" id="job-id">jid2715</span>
-                                                      </h5>
+                                  <!-- Modal -->
+                                  <div
+                                    class="modal fade"
+                                    id="exampleModal"
+                                    tabindex="-1"
+                                    role="dialog"
+                                    aria-labelledby="exampleModalLabel"
+                                    aria-hidden="true"
+                                  >
+                                    <div class="modal-dialog" role="document">
+                                      <div class="modal-content">
+                                        <div class="modal-header">
+                                          <button
+                                            type="button"
+                                            class="close"
+                                            data-dismiss="modal"
+                                            aria-label="Close"
+                                          >
+                                            <span aria-hidden="true"
+                                              >&times;</span
+                                            >
+                                          </button>
+                                        </div>
+                                        <div class="modal-body">
+                                          <div class="container-fluid">
+                                            <div class="row">
+                                              <div class="col-xl">
+                                                <div class="card bg-white">
+                                                  <div
+                                                    class="
+                                                      card-header
+                                                      bg-transparent
+                                                    "
+                                                  >
+                                                    <div
+                                                      class="
+                                                        row
+                                                        align-items-center
+                                                      "
+                                                    >
+                                                      <div class="col">
+                                                        <h5
+                                                          class="
+                                                            h2
+                                                            text-default
+                                                            mb-0
+                                                          "
+                                                        >
+                                                          Job ID :
+                                                          <span
+                                                            class="
+                                                              font-weight-normal
+                                                            "
+                                                            id="job-id"
+                                                            >jid2715</span
+                                                          >
+                                                        </h5>
+                                                      </div>
                                                     </div>
                                                   </div>
-                                                </div>
-                                                <div class="card-body">
-                                                  <div class="row">
-                                                    <div class="col-xl">
-                                                      <p class="h3">
-                                                        Estimated Cost :
-                                                        <span id="est-job-cost" class="font-weight-normal">Rs
-                                                          1329</span>
-                                                      </p>
-                                                      <hr class="my-3" />
-                                                      <div class="form-group">
-                                                        <label class="form-control-label" for="input-delivery-date">
-                                                          Estimated Delivery Date
-                                                        </label>
-                                                        <input type="text" name="delivery-date" id="input-delivery-date"
-                                                          class="form-control" placeholder="Date and Time" />
+                                                  <div class="card-body">
+                                                    <div class="row">
+                                                      <div class="col-xl">
+                                                        <p class="h3">
+                                                          Estimated Cost :
+                                                          <span
+                                                            id="est-job-cost"
+                                                            class="
+                                                              font-weight-normal
+                                                            "
+                                                            >Rs 1329</span
+                                                          >
+                                                        </p>
+                                                        <hr class="my-3" />
+                                                        <div class="form-group">
+                                                          <label
+                                                            class="
+                                                              form-control-label
+                                                            "
+                                                            for="input-delivery-date"
+                                                          >
+                                                            Estimated Delivery
+                                                            Date
+                                                          </label>
+                                                          <input
+                                                            type="text"
+                                                            name="delivery-date"
+                                                            id="input-delivery-date"
+                                                            class="form-control"
+                                                            placeholder="Date and Time"
+                                                          />
+                                                        </div>
                                                       </div>
                                                     </div>
                                                   </div>
@@ -391,10 +646,16 @@
                                             </div>
                                           </div>
                                         </div>
-                                      </div>
-                                      <div class="modal-footer">
-                                        <button class="btn btn-primary mt-1 mb-2" type="button"
-                                          onclick="handleSubmit('confirm')" data-dismiss="modal">Confirm Job</button>
+                                        <div class="modal-footer">
+                                          <button
+                                            class="btn btn-primary mt-1 mb-2"
+                                            type="button"
+                                            onclick="handleSubmit('confirm')"
+                                            data-dismiss="modal"
+                                          >
+                                            Confirm Job
+                                          </button>
+                                        </div>
                                       </div>
                                     </div>
                                   </div>
@@ -406,58 +667,81 @@
                       </div>
                     </div>
                   </div>
-                </div>
-              </form>
+                </form>
+              </div>
             </div>
           </div>
         </div>
+
+        <!-- Footer -->
+        <footer class="footer pt-3">
+          <div class="row align-items-center justify-content-lg-between">
+            <div class="col-lg-6">
+              <div class="copyright text-center text-lg-left text-muted">
+                &copy; 2020
+                <a
+                  href="https://garage-management.herokuapp.com/"
+                  class="font-weight-bold ml-1"
+                  target="_blank"
+                  >Garage Management ERP</a
+                >
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <ul
+                class="
+                  nav nav-footer
+                  justify-content-center justify-content-lg-end
+                "
+              >
+                <li class="nav-item">
+                  <a
+                    href="https://github.com/ShantanuPhatke"
+                    class="nav-link"
+                    target="_blank"
+                    >Shantanu</a
+                  >
+                </li>
+                <li class="nav-item">
+                  <a
+                    href="https://github.com/Tarunmoses"
+                    class="nav-link"
+                    target="_blank"
+                    >Tarun</a
+                  >
+                </li>
+                <li class="nav-item">
+                  <a
+                    href="https://github.com/mariodsouza21"
+                    class="nav-link"
+                    target="_blank"
+                    >Mario</a
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+        </footer>
       </div>
-
-      <!-- Footer -->
-      <footer class="footer pt-3">
-        <div class="row align-items-center justify-content-lg-between">
-          <div class="col-lg-6">
-            <div class="copyright text-center  text-lg-left  text-muted">
-              &copy; 2020 <a href="https://garage-management.herokuapp.com/" class="font-weight-bold ml-1"
-                target="_blank">Garage Management ERP</a>
-            </div>
-          </div>
-          <div class="col-lg-6">
-            <ul class="nav nav-footer justify-content-center justify-content-lg-end">
-              <li class="nav-item">
-                <a href="https://github.com/ShantanuPhatke" class="nav-link" target="_blank">Shantanu</a>
-              </li>
-              <li class="nav-item">
-                <a href="https://github.com/Tarunmoses" class="nav-link" target="_blank">Tarun</a>
-              </li>
-              <li class="nav-item">
-                <a href="https://github.com/mariodsouza21" class="nav-link" target="_blank">Mario</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </footer>
     </div>
-  </div>
 
-  <!-- Custom Js scripts -->
-  <!-- <script src="./custom-assets/js/jobcard.js"></script> -->
+    <!-- Custom Js scripts -->
+    <!-- <script src="./custom-assets/js/jobcard.js"></script> -->
 
-  <!-- Argon Scripts -->
-  <!-- Core -->
-  <script src="./assets/vendor/jquery/dist/jquery.min.js"></script>
-  <script src="./assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="./assets/vendor/js-cookie/js.cookie.js"></script>
-  <script src="./assets/vendor/jquery.scrollbar/jquery.scrollbar.min.js"></script>
-  <script src="./assets/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js"></script>
-  <!-- Firebase SDKs -->
-  <script src="https://www.gstatic.com/firebasejs/7.13.2/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/7.13.2/firebase-database.js"></script>
-  <!-- Argon JS -->
-  <script src="./assets/js/argon.js?v=1.2.0"></script>
-  <!-- custom -->
-  <script src="./custom-assets/js/firebase-config.js"></script>
-  <script src="./custom-assets/js/createjobcard.js"></script>
-</body>
-
+    <!-- Argon Scripts -->
+    <!-- Core -->
+    <script src="./assets/vendor/jquery/dist/jquery.min.js"></script>
+    <script src="./assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="./assets/vendor/js-cookie/js.cookie.js"></script>
+    <script src="./assets/vendor/jquery.scrollbar/jquery.scrollbar.min.js"></script>
+    <script src="./assets/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js"></script>
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/9.4.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.4.0/firebase-database-compat.js"></script>
+    <!-- Argon JS -->
+    <script src="./assets/js/argon.js?v=1.2.0"></script>
+    <!-- custom -->
+    <script src="./custom-assets/js/firebase-config.js"></script>
+    <script src="./custom-assets/js/createjobcard.js"></script>
+  </body>
 </html>

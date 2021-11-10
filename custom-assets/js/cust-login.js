@@ -1,34 +1,34 @@
 function login() {
-  const uid = document.getElementById("uid_field").value;
-  const password = document.getElementById("password_field").value;
+  const uid = document.getElementById("uid_field").value
+  const password = document.getElementById("password_field").value
 
   // Get a reference to the database service
-  const ref = firebase.database().ref("tarun/customer");
+  const ref = firebase.database().ref("user/customer")
   ref
     .orderByChild("uid")
     .equalTo(uid)
     .once("value", (snapshot) => {
       if (snapshot.exists()) {
         if (password == snapshot.child(uid).child("password").val()) {
-          const userData = snapshot.child(uid);
-          console.log(userData);
+          const userData = snapshot.child(uid)
+          console.log(userData)
 
           const userDetails = {
             uid: userData.child("uid").val(),
             name: userData.child("name").val(),
-          };
+          }
 
-          localStorage.setItem("user", JSON.stringify(userDetails));
-          window.location.href = "./../../cust-job-history.html";
+          localStorage.setItem("user", JSON.stringify(userDetails))
+          window.location.href = "./../../cust-job-history.html"
         } else {
-          let errorMessage = "Invalid password";
-          alert(errorMessage);
+          let errorMessage = "Invalid password"
+          alert(errorMessage)
         }
       } else {
-        let errorMessage = "Invalid UID";
-        alert(errorMessage);
+        let errorMessage = "Invalid UID"
+        alert(errorMessage)
       }
-    });
+    })
 }
 
 // firebase.auth().onAuthStateChanged(function (user) {
@@ -69,5 +69,5 @@ function login() {
 // }
 
 function logout() {
-  firebase.auth().signOut();
+  firebase.auth().signOut()
 }

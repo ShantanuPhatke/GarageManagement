@@ -1,5 +1,5 @@
 // Your web app's Firebase configuration
-var firebaseConfig = {
+const firebaseConfig = {
   apiKey: "",
   authDomain: "",
   databaseURL: "",
